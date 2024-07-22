@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect} from "react"
 import { connect, styled } from "frontity"
 import Link from "@frontity/components/link";
 import Image from "@frontity/components/image"
@@ -10,8 +10,22 @@ import {useMediaQuery} from "react-responsive";
 import ReactCountryFlag from "react-country-flag"
 
 
+const Footer = ({state, libraries}) => {
 
-const Footer = () => {
+    /*useEffect(() => {
+        async function fetchPages() {
+            const response = await libraries.source.api.get({
+                endpoint: "pages",
+            });
+            const pageData = await libraries.source.populate({
+                response,
+                state,
+            });
+        }
+        fetchPages();
+    }, []);*/
+
+    const contactPage = state.source.page[17];
 
     const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
     const isDekstop = useMediaQuery({ query: '(min-width: 1224px) and (max-width: 1823px)' });
@@ -19,7 +33,6 @@ const Footer = () => {
     const isLaptop = useMediaQuery({ query: '(min-width: 601px) and (max-width: 799px)' });
     const isSmall = useMediaQuery({query: '(min-width: 401px) and (max-width: 600px)' });
     const isMobile = useMediaQuery({ query: '(max-width: 400px)' })
-
 
     return(
         <InView threshold={.1}>
@@ -34,7 +47,7 @@ const Footer = () => {
                                 <LinkTitle isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}><span> BUREAUX </span></LinkTitle>
                                 <ul>
                                     <li>
-                                        <Link link="/contact">Tout les bureaux</Link>
+                                        <Link link="/">Tout les bureaux</Link>
                                     </li>
                                     <li>
                                         <Link link ="/blog">Nos collections</Link>
@@ -86,7 +99,7 @@ const Footer = () => {
                                         <Link link="/contact">A propos</Link>
                                     </li>
                                     <li>
-                                        <Link link ="/blog">Contact</Link>
+                                        <Link link="/">Link</Link>
                                     </li>
                                     <li>
                                         <Link link="/a-propos">Nos partenaires</Link>
@@ -182,7 +195,6 @@ const FooterStyled = styled.div`
   transform: translateY(${({ inView }) => (inView ? "0" : "70px")});
   transition: 1s cubic-bezier(.5, 0, 0, 1);
   opacity: ${({inView}) => (inView ? "1":"0")};
-  margin-top:50px;
 `;
 
 const Wrapper = styled.div`

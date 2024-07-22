@@ -15,7 +15,7 @@ const News = () => {
 
     return (
         <Newsletter>
-            <InView threshold={.7}>
+            <InView threshold={.2}>
                 {({ inView, ref }) => (
                     <Cell ref={ref} inView={inView} isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
                         <TextCell isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
@@ -42,15 +42,15 @@ const Newsletter = styled.div`
   position: relative;
   width: 100%;
   display: inline-block;
-  padding: 5rem 0 1rem;
-  
+  padding: 3rem 0 3rem;
+  min-height: 25vh;
 `;
 
 const Cell = styled.div`
   display: flex;
   flex-flow: ${(props) => (props.isMobile || props.isSmall || props.isLaptop ? "row wrap" : "row wrap")};
   justify-content: space-between;
-  transition: 1s cubic-bezier(.5, 0, 0, 1);
+  transition: opacity 1s cubic-bezier(.5, 0, 0, 1);
   opacity: ${({inView}) => (inView ? "1":"0")};
   margin-left: 1em;
 `

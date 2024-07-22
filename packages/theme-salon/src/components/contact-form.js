@@ -10,7 +10,6 @@ const Form = ({ state, libraries }) => {
     const Html2React = libraries.html2react.Component;
 
 
-
     const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
     const isDekstop = useMediaQuery({ query: '(min-width: 1224px) and (max-width: 1823px)' });
     const isMedium = useMediaQuery({ query: '(min-width: 800px) and (max-width: 1223px)' });
@@ -25,14 +24,12 @@ const Form = ({ state, libraries }) => {
             <InView threshold={.1}>
                 {({ inView, ref }) => (
                     <Container ref={ref} inView={inView}>
-
                             <Heading isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
                                 Contactez<br/><strong>Nous !</strong>
                             </Heading>
                             <Content>
                                 <Html2React html={form.content.rendered}/>
                             </Content>
-
                     </Container>
                 )}
             </InView>
@@ -89,6 +86,7 @@ const Content = styled.div`
     border: none;
     border-bottom: 2px solid #000;
     appearance: none;
+    background-color: rgba(231, 225, 218, .4);
     
     :focus {
       outline: none;
@@ -123,7 +121,7 @@ const Content = styled.div`
   
   textarea {
     width: 100%;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     letter-spacing: .026rem;
     box-sizing: border-box; 
     padding: 1.5rem;

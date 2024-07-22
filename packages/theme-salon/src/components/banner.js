@@ -17,11 +17,6 @@ const Banner = () => {
 
     return (
         <FadeBanner>
-            <Image
-                src={BannerBg}
-                width="100%"
-                title="Bannière"
-            />
 
 
             <InView threshold={.7}>
@@ -55,13 +50,8 @@ const FadeBanner = styled.div`
   width: 100%;
   text-align: left;
   height: 80vh;
+  overflow: auto;
 
-  
-  img {
-    object-fit: cover; 
-    height: 79vh;    
-  }
-  
   &::before {
     content: '';
     position: absolute;

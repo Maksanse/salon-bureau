@@ -10,44 +10,49 @@ import MainPic from "../assets/ogi_drive_main.jpeg";
 const Bestsellers = () => {
     return(
         <FlexBox>
-            <Paper square={false}variant="outlined" elevation={6} sx={{ width: "250px" , padding: "16px" }}>
-                <Image
-                    width="100%"
-                    src={MainPic}
-                />
-            </Paper>
-            <Paper square={false} variant="outlined" elevation={6} sx={{ width: "250px" , padding: "16px"}}>
-                <Image
-                    width="100%"
-                    src={MainPic}
-                />
-            </Paper>
-            <Paper square={false} variant="outlined" elevation={6} sx={{ width: "250px" , padding: "16px" }}>
-                <Image
-                    width="100%"
-                    src={MainPic}
-                />
-            </Paper>
-            <Paper square={false} variant="outlined" elevation={6} sx={{ width: "250px" , padding: "16px" }}>
-                <Image
-                    width="100%"
-                    src={MainPic}
-                />
-            </Paper>
+            <FlexRow>
+                <FlexContent>
+
+                </FlexContent>
+            </FlexRow>
+            <FlexRow>
+                <FlexContent>
+
+                </FlexContent>
+            </FlexRow>
+            <FlexRow>
+                <FlexContent>
+
+                </FlexContent>
+            </FlexRow>
+            <FlexRow>
+                <FlexContent>
+
+                </FlexContent>
+            </FlexRow>
+
         </FlexBox>
-
-
-
-
-)
+    )
 }
 
 export default connect(Bestsellers)
 
 const FlexBox = styled.div`
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
+    gap: 5px;
+`
+
+const FlexRow = styled.div`
+    display: flex;
+    flex: 1;
+    flex-flow: row-wrap;
     justify-content: center;
-    gap: 2px;
-    margin-top: 2rem;
+`
+
+const FlexContent = styled.div`
+    display: flex;
+    height: 300px;
+    width: 100%;    
+    background: url('${MainPic}') no-repeat;
 `

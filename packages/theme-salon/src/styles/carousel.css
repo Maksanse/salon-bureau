@@ -1,0 +1,48 @@
+.custom-carousel {
+    position: relative;
+}
+
+
+.custom-back-button{
+    color: black;
+    background-color: transparent;
+    margin-left: 2em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    border: none;
+}
+
+.custom-back-button > svg{
+    border: 1px solid #f6f5f3;
+    backdrop-filter: blur(8px);
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    padding: 12px;
+    width: 44px;
+    height: 44px;
+    color: rgb(246, 245, 243);
+}
+
+.custom-next-button{
+    color: black;
+    background-color: transparent;
+    margin-right: 2em;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    border: none;
+}
+
+.custom-next-button > svg {
+    border: 1px solid #f6f5f3;
+    backdrop-filter: blur(8px);
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+    padding: 12px;
+    width: 44px;
+    height: 44px;
+    color: rgb(246, 245, 243);
+}

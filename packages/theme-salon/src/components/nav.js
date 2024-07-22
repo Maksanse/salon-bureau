@@ -29,7 +29,6 @@ const Navigation = ({ actions, state }) => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [state.themeSalon.isSidebarOpen]);
 
-
     const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
     const isDekstop = useMediaQuery({ query: '(min-width: 1224px) and (max-width: 1823px)' });
     const isMedium = useMediaQuery({ query: '(min-width: 800px) and (max-width: 1223px)' });
@@ -48,7 +47,7 @@ const Navigation = ({ actions, state }) => {
                         <Link link="#">Accueil</Link>
                     </NavItem>
                     <NavItem isSidebarOpen={state.themeSalon.isSidebarOpen} isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
-                        <Link link="#">Nos produits</Link>
+                        <Link link="/categories">Nos produits</Link>
                     </NavItem>
                     <NavItem isSidebarOpen={state.themeSalon.isSidebarOpen} isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
                         <Link link="/contact">Contact</Link>
@@ -76,7 +75,6 @@ const Navigation = ({ actions, state }) => {
                             <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
                         )}
                     </NavItemSearch>
-
                 </NavLinksRight>
             </NavBar>
         </>
@@ -95,11 +93,14 @@ const NavBar = styled.nav`
   width: 100%;
   z-index:1000;
   position: ${(props) => (props.isSticky ? "fixed" : "relative")};
-  transition: position 0.7s ease-in-out;
-  background-color: #fff;
+  transition: top 0.9s ease-in-out, background-color 0.3s ease-in-out,
+    height 0s ease-in-out, box-shadow 0.9s ease-in-out,
+    position 0.9s ease-in-out;  
+  background-color: ${(props) => (props.isSticky ? "#fff" : "transparent")};
   height: ${(props) => (props.isSticky ? "17vh" : "20vh")};
   box-shadow: ${(props) => (
-  props.isSticky ? "rgba(0, 0, 0, 0.16) 0px 1px 4px;" : "rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;")};
+  props.isSticky ? "rgba(0, 0, 0, 0.16) 0px 1px 4px;" : null)};
+
 `;
 
 const NavLinksLeft = styled.div`
@@ -131,10 +132,10 @@ const NavItem = styled.div`
     font-weight: 300;
     font-size:  ${(props) => (
     props.isBigScreen ? "1.300rem" : 
-    props.isDekstop ? "1.150rem" : 
-    props.isMedium ? ".950rem" : 
-    props.isLaptop ? ".700rem" :
-    props.isSmall ? ".650rem" :    
+    props.isDekstop ? "1.200rem" : 
+    props.isMedium ? "1rem" : 
+    props.isLaptop ? ".800rem" :
+    props.isSmall ? ".700rem" :    
     props.isMobile ? ".600rem" : 
     "1.500rem")};
     white-space: nowrap; 
@@ -154,14 +155,14 @@ const NavItemSearch = styled.div`
 
 const Logo = styled.div`
   display: ${(props) => (props.isMobile || props.isSmall || props.isLaptop ? "none" : "block")};
-  padding: 1rem;
+  padding: 1.5rem 1rem 1rem 4rem;
+  
   img {
-    width: ${(props) => (props.isSticky ? "50%" : "70%")};
+    width: 50%;
     height: auto;
     margin: auto;
     text-align: center;
     vertical-align: center;
-    
   }
 `;
 

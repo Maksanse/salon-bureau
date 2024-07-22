@@ -25,7 +25,7 @@ const Page = ({ state, libraries }) => {
                 <h1>{page.title.rendered}</h1>
             </Heading>
             <hr/>
-            <Content  isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+            <Content isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
                 <Html2React html={sanitizedContent}/>
             </Content>
         </Container>

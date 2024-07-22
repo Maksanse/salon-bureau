@@ -13,15 +13,23 @@ import Banner from "./banner";
 import News from "./news";
 import Form from "./contact-form";
 import Subs from "./subs";
-import Categories from "./categories";
 import Bestsellers from "./bestsellers";
+import Carousel from "./carousel"
+import BannerBg from "../assets/banner.jpg"
+import ParaBanner from './parallax-banner';
+import Catalog from './catalog';
+import Category from './category';
+import TextImage from './shared/textimage'
+import ImageText from './shared/imagetext'
+import processors from '../processors/post-template';
+
 
 
 const Title = () => <h1>Salon Bureau</h1>;
-const Root = ({ state }) => {
+const Root = ({ state, libraries }) => {
     const data = state.source.get(state.router.link);
-
-
+    const categories = state.source.category;
+    libraries.html2react.processors.push(...processors);
 
     return (
         <>
@@ -33,7 +41,7 @@ const Root = ({ state }) => {
                         padding: 0;
                     }
                     main {
-                        background-color: #fff;
+                        background-color: rgba(231, 225, 218, .4);
                         color: #000;
                     }
                 `}
@@ -45,66 +53,92 @@ const Root = ({ state }) => {
                 <link rel="canonical" href={state.router.link} />
             </Head>
             <Container>
-
-                <Nav />
-                    {state.themeSalon.isSidebarOpen ? (
+                {data.isHome ? (
+                    state.themeSalon.isSidebarOpen ? (
+                        <Nav />
+                    ) : (
+                        <BannerImg>
+                            <Nav />
+                            <Banner />
+                        </BannerImg>
+                    )
+                ) : (
+                    <Nav />
+                )}
+                {state.themeSalon.isSidebarOpen ? (
                         <SidebarFullWidth />
-                    ):(
-                        <>
-                            <MainContent>
-                                <main>
-                                    {data.isHome &&(
-                                        <>
-                                            <Banner/>
-                                            <Bestsellers/>
-                                            <Routes>
-                                                <h2>Current URL: {state.router.link}</h2>
-                                                <h3>Our articles :</h3>
-                                                <Switch>
-                                                    <Loading when={data.isFetching} />
-                                                    <List when={data.isArchive} />
-                                                    <div when={data.isPost}>This is a post</div>
-                                                    <div when={data.isPage}>This is a page</div>
-                                                    <Error when={data.isError} />
-                                                </Switch>
-                                            </Routes>
-                                            <News/>
+                ):(
+                    <>
+                        <MainContent>
+                            <main>
+                                {data.isHome &&(
+                                    <>
+                                        <Carousel/>
+                                        <TextImage/>
+                                        <ParaBanner/>
+                                        <ImageText/>
 
-                                        </>
-                                        )}
-                                    <Switch>
-                                        <Form when={data.link === "/contact/"}/>
-                                        <Subs when={data.link === "/newsletter/"}/>
-                                        <Categories when={data.link === "/category/"}/>
-                                        <Post when={data.isPost} />
-                                        <Page when={data.isPage} />
-                                    </Switch>
-                                </main>
-                            </MainContent>
-                            <Footer />
-                        </>
+                                        <Routes>
+
+                                    {/*     <h3>Our articles :</h3> */}
+                                            <Switch>
+                                                <Loading when={data.isFetching} />
+                                        {/*     <List when={data.isArchive} />  */}
+                                                <div when={data.isPost}>This is a post</div>
+                                                <div when={data.isPage}>This is a page</div>
+
+                                            </Switch>
+                                        </Routes>
+
+                                    </>
+                                    )}
+                                {/*<h2>Current URL: {state.router.link}</h2>*/}
+                                <Switch>
+                                    <Form when={data.link === "/contact/"}/>
+                                    <Subs when={data.link === "/newsletter/"}/>
+                                    <Catalog when={data.isCategory}/>
+                                    <Post when={data.isPost} />
+                                    <Page when={data.isPage} />
+                                    <Error when={data.is404} />
+                                    <Category when={data.isSpecificCategory}/>
+
+
+                                </Switch>
+
+                                {data.link === "/newsletter/" ? (null) : (<News/>)}
+
+                            </main>
+                        </MainContent>
+                        <Footer />
+                    </>
                     )}
             </Container>
         </>
-    );
-};
+    )
+}
+
+export default connect(Root);
 
 const Container = styled.div`
    display: flex;
    flex-direction: column;
    min-height: 100vh;
+
 `;
 
 const MainContent = styled.div`
   flex: 1;
+  background-color: rgba(231, 225, 218, 1);
 `;
 
 const Routes = styled.div`
-  margin-left: 2vh;  
-  
+  padding-left: 2rem; 
+
   h2 {
     font-size: 3em;
     font-weight: lighter;
+    margin: 0;
+    padding: 2rem 0 2rem;
   }
   
   h3 {
@@ -125,4 +159,11 @@ const Routes = styled.div`
   }
 `;
 
-export default connect(Root);
+const BannerImg = styled.div`
+  background-image: url('${BannerBg}');
+  background-position: center;
+  background-size: 100% cover;
+  background-repeat: no-repeat;
+  height: auto;
+`
+
