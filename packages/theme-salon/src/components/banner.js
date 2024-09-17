@@ -50,7 +50,7 @@ const FadeBanner = styled.div`
   width: 100%;
   text-align: left;
   height: 80vh;
-  overflow: auto;
+  overflow: hidden;
 
   &::before {
     content: '';

@@ -344,7 +344,8 @@ const SocialLinks = styled(Link)`
 
 const Credits = styled.div`   
   white-space: nowrap;
-  text-align: right;
+  text-align: left;
+  margin-right: 1rem;   
   font-family: HelveticaNeue;
   font-weight: 100;
   font-size: 1.2rem; 

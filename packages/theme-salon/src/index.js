@@ -13,6 +13,7 @@ export default {
       isSidebarOpen: false,
       isProfileIconHovered: false,
       isVisible: false,
+      menus: [],
     },
     source: {
       data: {
@@ -56,6 +57,26 @@ export default {
   },
   actions: {
     themeSalon: {
+      fetchMenus: async ({ state, libraries }) => {
+            try {
+                const response = await libraries.source.api.get({
+                    endpoint: "menus",
+                    params: {
+                        per_page: 100,
+                        page: 1
+                    }
+                });
+
+                const menus = await response.json();
+
+                // Stocker les menus dans le state
+                console.log("Menus récupérés :", menus); // DEBUG : Voir si les données sont récupérées
+
+                state.themeSalon.menus = menus;
+            } catch (error) {
+                console.error("Erreur lors de la récupération des menus :", error);
+            }
+      },
       revealPost: ({state}) => {
         state.themeSalon.isVisible = !state.themeSalon.isVisible
       },

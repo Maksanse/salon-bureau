@@ -77,16 +77,13 @@ const Root = ({ state, libraries }) => {
                                         <TextImage/>
                                         <ParaBanner/>
                                         <ImageText/>
-
                                         <Routes>
-
                                     {/*     <h3>Our articles :</h3> */}
                                             <Switch>
                                                 <Loading when={data.isFetching} />
                                         {/*     <List when={data.isArchive} />  */}
                                                 <div when={data.isPost}>This is a post</div>
                                                 <div when={data.isPage}>This is a page</div>
-
                                             </Switch>
                                         </Routes>
 
@@ -101,8 +98,6 @@ const Root = ({ state, libraries }) => {
                                     <Page when={data.isPage} />
                                     <Error when={data.is404} />
                                     <Category when={data.isSpecificCategory}/>
-
-
                                 </Switch>
 
                                 {data.link === "/newsletter/" ? (null) : (<News/>)}

@@ -21,7 +21,7 @@ const SidebarFullWidth = () => {
                 <GridContainer isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
                     <Column>
                         <SmallBlock isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
-                            <h3>Bureau</h3>
+                            <h3>Bureaux</h3>
                             <ul>
                                 <li><a href="#">Bureau droit</a></li>
                                 <li><a href="#">Bureau réglable</a></li>
@@ -231,6 +231,10 @@ const SmallBlock = styled.div`
     text-decoration: none;
     color: #333;
     white-space: normal;
+    
+    &:hover {
+        opacity: .6;    
+    }
   }
   
   ul {

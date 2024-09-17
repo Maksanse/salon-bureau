@@ -1,11 +1,13 @@
 import React, { useEffect} from "react";
 import { connect, styled } from "frontity";
 import Link from "@frontity/components/link";
+import Breadcrumb from '../components/shared/breadcrumb';
+
 
 const Category = ({ state, actions, libraries }) => {
     const data = state.source.get(state.router.link);
-
-
+ 
+    
     useEffect(() => {
         const fetchCategoryAndPosts = async () => {
 
@@ -16,7 +18,10 @@ const Category = ({ state, actions, libraries }) => {
                 params: { slug: categorySlug },
             });
 
-            const entitiesAdded = await libraries.source.populate({ response, state });
+            const entitiesAdded = await libraries.source.populate({
+                response,
+                state,
+            });
             const category = entitiesAdded[0];
             const categoryId = category.id;
 
@@ -57,39 +62,44 @@ const Category = ({ state, actions, libraries }) => {
         fetchCategoryAndPosts();
 
     }, []);
-    const postByCategory = Object.values(state.source.post);
-    const postCategories = state.source.category;
+    const categorySlug = data.route.split("/").filter(Boolean).pop();
+    const category = Object.values(state.source.category).find(
+        (cat) => cat.slug === categorySlug
+    );
+
+    if (!category) return <div>Chargement de la catégorie...</div>;
+
+    const posts = Object.values(state.source.post).filter((post) =>
+        post.categories.includes(category.id)
+    );
 
 
     return (
-        Object.keys(postByCategory).map((catId) => {
-        const postCategory = postCategories[catId];
-        const postByCategoryId = postByCategory[catId];
+        <>
+        <Breadcrumb/>
+        <Container>
 
-
-            return(
-        <div>
-            <h1>{postCategory.name}</h1>
+            <CategoryTitle>{category.name}</CategoryTitle>
 
             <PostList>
-                {postByCategoryId.map((post) => {
+                {posts.map((post) => {
                     const attachment = post.featured_media ? state.source.attachment[post.featured_media] : null;
                     const imageUrl = attachment ? attachment.source_url : "";
                     return (
-                        <Card key={post.id}>
-                            <PostLink>
-                                <Link link={post.link}>
-                                    <PostImage src={imageUrl} alt={post.title.rendered} />
+                        <PostLink link={post.link}>
+                            <Card key={post.id}>
+                                <PostImage src={imageUrl} alt={post.title.rendered} />
+                                <PostTitle>
                                     <span>{post.title.rendered}</span>
-                                </Link>
-                            </PostLink>
-                        </Card>
+                                </PostTitle>
+                            </Card>
+                        </PostLink>
                     )
                 })}
             </PostList>
-        </div>
+        </Container>
+        </>
         );
-    }));
 
 
 
@@ -101,6 +111,17 @@ const Category = ({ state, actions, libraries }) => {
 
 export default connect(Category);
 
+const Container = styled.div`
+
+  display: flex;
+  flex-flow: row wrap;
+
+  margin-left: 2rem;
+  margin-right: auto;
+  
+`;
+
+
 const PostList = styled.div`
   display: flex;
   flex-flow: row wrap;
@@ -108,58 +129,74 @@ const PostList = styled.div`
 `;
 
 const Card = styled.div`
+  display:flex;
+  flex-flow: column nowrap;
+    justify-content: space-between; /* S'assure que l'image et le titre sont bien séparés */
+
+  align-items: center;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;  
-  width: 400px;
-  height: 350px;
+  width: 350px;
+  height: 300px;
+  overflow: hidden;
   background-color: #fff;
+
 `;
 
 const PostImage = styled.img`
-  max-width: 100%;
-  height: auto;
+  width: 100%;
   object-fit: cover;
-  background-image: linear-gradient(to bottom, transparent, rgba(255, 255, 255, .99));
+  height: 240px; /* Hauteur fixe pour l'image */
+  flex-shrink: 0; /* Empêche l'image de se rétrécir */
+
 `;
 
-const PostLink = styled.div`
-  a {
-    display:flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    margin: 0;
-    text-align: center;
-    color: #000;
-    opacity: 1;
+const PostLink = styled(Link)`
+  
     text-decoration: none;
     cursor: pointer;
+    color: black;
+    
     
     &:hover {
-      opacity: .1;
+      opacity: .6;
     }
     
-    span {
-       margin: 1em;
-       font-size: 1.5em;
-       font-weight: 300;
-    }
-  }
+    
+`;
+
+const PostTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Centre le texte horizontalement */
+  flex-shrink: 0; /* Empêche le titre de se rétrécir */
+  height: 10px; /* Hauteur fixe du titre */
+  padding: 1em;
+  
+  span {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    font-weight: 300;
+    text-align: center;
+    white-space: nowrap; 
+   }
+  
 `;
 
 
-// const Container = styled.div`
-//   padding: 20px;
-// `;
-//
-// const Posts = styled.div`
-//   display: flex;
-//   flex-wrap: wrap;
-//   gap: 20px;
-// `;
-//
-// const Post = styled.div`
-//   width: 300px;
-//   padding: 10px;
-//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-// `;
+const CategoryTitle = styled.h1`
+  color: #333;
+  margin: 2rem;
+  text-transform: uppercase;
+  font-size: 2em;
+  font-weight: 200;
+`;
+
+
+const BreadcrumbContainer = styled.div`
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+`;

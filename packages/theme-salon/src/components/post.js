@@ -1,9 +1,10 @@
-import React from "react"
-import { connect, styled } from "frontity"
-import {InView} from "react-intersection-observer"
+import React from "react";
+import { connect, styled } from "frontity";
+import {InView} from "react-intersection-observer";
 import {useMediaQuery} from "react-responsive";
-
-
+import {ImageFond} from '../assets/fond-post.jpg';
+import Breadcrumb from '../components/shared/breadcrumb';
+import More from '../components/more';
 
 
 const Post = ({ state, libraries }) => {
@@ -26,13 +27,19 @@ const Post = ({ state, libraries }) => {
             <InView threshold={.1}>
                 {({ inView, ref }) => (
                     <Container isMobile={isMobile} ref={ref} inView={inView}>
-                        <Heading isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+
+                        <Heading isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile} bgImage="{ImageFond}">
+                            <BreadcrumbContainer> <Breadcrumb/></BreadcrumbContainer>
+
+
+
                             <h1>{post.title.rendered}</h1>
                         </Heading>
 
                         <Content isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
                             <Html2React html={sanitizedContent} />
                         </Content>
+                        <More/>
                     </Container>
                     )}
             </InView>
@@ -57,6 +64,9 @@ const Heading = styled.div`
   font-size: 25px;
   height: 17vh;
   padding: 20px;
+  background-color: #e5e5e5;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  margin-bottom: .5rem;
   
   h1 {
     font-weight: 200;
@@ -82,15 +92,10 @@ const BannerDiv = styled.div`
   justify-content: center;
   overflow: hidden;
   
-  figure {
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+  
+  img {
     width: 100%;
     height: 100%;
-    margin: 0;
     object-fit: cover;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;  
   }
@@ -143,6 +148,13 @@ const ProductImg = styled.div`
       height: 100%;
       object-fit: cover;
   }`
+
+const BreadcrumbContainer = styled.div`
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+`
 
 export {
     ProductImg,

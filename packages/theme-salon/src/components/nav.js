@@ -29,6 +29,15 @@ const Navigation = ({ actions, state }) => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, [state.themeSalon.isSidebarOpen]);
 
+
+    useEffect(() => {
+        actions.themeSalon.fetchMenus();
+    }, [state.router.link]);
+
+    const menuItems = state.themeSalon.menus;
+    console.log(menuItems);
+
+
     const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
     const isDekstop = useMediaQuery({ query: '(min-width: 1224px) and (max-width: 1823px)' });
     const isMedium = useMediaQuery({ query: '(min-width: 800px) and (max-width: 1223px)' });

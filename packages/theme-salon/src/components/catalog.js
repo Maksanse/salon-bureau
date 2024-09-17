@@ -4,6 +4,10 @@ import {InView} from "react-intersection-observer"
 import {useMediaQuery} from "react-responsive";
 import Link from "@frontity/components/link";
 import SyncLoader from "react-spinners/SyncLoader"
+import Breadcrumb from './shared/breadcrumb'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faChevronRight} from "@fortawesome/free-solid-svg-icons";
+
 
 
 const Catalog = ({ state, libraries }) => {
@@ -73,6 +77,8 @@ const Catalog = ({ state, libraries }) => {
 
     return (
         <Container>
+            <Breadcrumb/>
+
             {loading ? (
                 <Loading>
                     <SyncLoader color="#000" />
@@ -84,22 +90,26 @@ const Catalog = ({ state, libraries }) => {
 
                     return (
                         <CategorySection key={catId}>
+
                             <hr/>
-                            <CategoryTitle>{category.name}</CategoryTitle>
+                            <CategoryLink link={category.link}>
+
+                                <CategoryTitle><FontAwesomeIcon icon={faChevronRight} /> {category.name}</CategoryTitle>
+                            </CategoryLink>
                             <PostList>
                                 {posts.map((post) => {
                                     const attachment = post.featured_media ? state.source.attachment[post.featured_media] : null;
                                     const imageUrl = attachment ? attachment.source_url : "";
 
                                     return (
-                                        <Card key={post.id}>
-                                            <PostLink>
-                                                <Link link={post.link}>
-                                                    <PostImage src={imageUrl} alt={post.title.rendered} />
+                                        <PostLink link={post.link}>
+                                            <Card key={post.id}>
+                                                <PostImage src={imageUrl} alt={post.title.rendered} />
+                                                <PostTitle>
                                                     <span>{post.title.rendered}</span>
-                                                </Link>
-                                            </PostLink>
-                                        </Card>
+                                                </PostTitle>
+                                            </Card>
+                                        </PostLink>
                                     );
                                 })}
                             </PostList>
@@ -114,49 +124,70 @@ const Catalog = ({ state, libraries }) => {
 export default connect(Catalog);
 
 const Container = styled.div`
+
+  display: flex;
+  flex-flow: row wrap;
+
   margin-left: auto;
   margin-right: auto;
   
 `;
 
 const Card = styled.div`
+  display:flex;
+  flex-flow: column nowrap;
+    justify-content: space-between; /* S'assure que l'image et le titre sont bien séparés */
+
+  align-items: center;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;  
-  width: 400px;
+  width: 350px;
   height: 300px;
+  overflow: hidden;
   background-color: #fff;
+
 `;
+
 
 const PostImage = styled.img`
-  max-width: 100%;
-  height: auto;
+  width: 100%;
   object-fit: cover;
-  background-image: linear-gradient(to bottom, transparent, rgba(255, 255, 255, .99));
+  height: 240px; /* Hauteur fixe pour l'image */
+  flex-shrink: 0; /* Empêche l'image de se rétrécir */
+
 `;
 
-const PostLink = styled.div`
-  a {
-    display:flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    margin: 0;
-    text-align: center;
-    color: #000;
-    opacity: 1;
+const PostTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Centre le texte horizontalement */
+  flex-shrink: 0; /* Empêche le titre de se rétrécir */
+  height: 10px; /* Hauteur fixe du titre */
+  padding: 1em;
+  
+  span {
     text-decoration: none;
     cursor: pointer;
+    font-size: 1.5em;
+    font-weight: 300;
+    text-align: center;
+    white-space: nowrap; 
+   }
+  
+`;
+
+const PostLink = styled(Link)`
+  
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    
     
     &:hover {
-      opacity: .1;
+      opacity: .6;
     }
     
-    span {
-       margin: 1em;
-       font-size: 1.5em;
-       font-weight: 300;
-    }
-  }
+    
 `;
 
 const CategorySection = styled.div`
@@ -175,6 +206,18 @@ const PostList = styled.div`
   display: flex;
   flex-flow: row wrap;
   gap: 3em;
+`;
+
+const CategoryLink = styled(Link)`
+   text-decoration: none;
+    cursor: pointer;
+    color: black;
+    
+    
+    &:hover {
+      opacity: .5;
+    }
+    
 `;
 
 const Loading = styled.div`
