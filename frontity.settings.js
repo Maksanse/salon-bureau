@@ -15,7 +15,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "url": "https://espace-bois-59.com/"
+          "url": "http://localhost:8080"
         }
       }
     },
