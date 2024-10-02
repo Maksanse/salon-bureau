@@ -10,8 +10,6 @@ const Subs = ({ state, libraries }) => {
     const subs = state.source.page[118];
     const Html2React = libraries.html2react.Component;
 
-
-
     const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
     const isDekstop = useMediaQuery({ query: '(min-width: 1224px) and (max-width: 1823px)' });
     const isMedium = useMediaQuery({ query: '(min-width: 800px) and (max-width: 1223px)' });
@@ -19,10 +17,8 @@ const Subs = ({ state, libraries }) => {
     const isSmall = useMediaQuery({query: '(min-width: 401px) and (max-width: 600px)' });
     const isMobile = useMediaQuery({ query: '(max-width: 400px)' })
 
-
     return (
         <>
-
             <InView threshold={.1}>
                 {({ inView, ref }) => (
                     <Container ref={ref} inView={inView} isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
@@ -35,7 +31,6 @@ const Subs = ({ state, libraries }) => {
                         <Content isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
                             <Html2React html={subs.content.rendered}/>
                         </Content>
-
                     </Container>
                 )}
             </InView>

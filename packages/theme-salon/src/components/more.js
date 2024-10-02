@@ -7,9 +7,6 @@ import Link from "@frontity/components/link";
 import ProfileImg from '../assets/fille.jpg';
 
 
-
-
-
 const More = ({state}) => {
 
     const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
@@ -64,7 +61,6 @@ export default connect(More)
 const Cell = styled.div`
   display: flex;
   margin-left: 1em;
-  
   justify-content: space-evenly;
   align-items: center;
   margin: 0;

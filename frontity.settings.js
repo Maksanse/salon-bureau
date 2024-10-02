@@ -2,7 +2,7 @@ const settings = {
   "name": "salon-bureau",
   "state": {
     "frontity": {
-      "url": "https://test.frontity.org",
+      "url": "https://salon-bureau-38wi.vercel.app",
       "title": "Test Frontity Blog",
       "description": "WordPress installation for Frontity development"
     }
