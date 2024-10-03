@@ -1,4 +1,12 @@
 {
+  "scripts": {
+    "layer0:dev": "layer0 dev",
+    "layer0:build": "layer0 build",
+    "layer0:deploy": "layer0 deploy",
+    "dev": "frontity dev",
+    "build": "node -v && frontity build && node -v",
+    "serve": "frontity serve"
+  },
   "name": "salon-bureau",
   "version": "1.0.0",
   "private": true,
@@ -9,11 +17,6 @@
   "engines": {
     "node": ">=10.0.0",
     "npm": ">=6.0.0"
-  },
-  "scripts": {
-    "dev": "frontity dev",
-    "build": "node -v && frontity build && node -v",
-    "serve": "frontity serve"
   },
   "prettier": {},
   "dependencies": {
@@ -46,5 +49,13 @@
     "react-scroll-parallax": "^3.4.5",
     "react-spinners": "^0.13.8",
     "theme-salon": "file:packages/theme-salon"
+  },
+  "devDependencies": {
+    "@layer0/cli": "^4.20.0",
+    "@layer0/core": "^4.20.0",
+    "@layer0/devtools": "^4.20.0",
+    "@layer0/frontity": "^4.20.0",
+    "@layer0/prefetch": "^4.20.0",
+    "@layer0/react": "^4.20.0"
   }
 }
