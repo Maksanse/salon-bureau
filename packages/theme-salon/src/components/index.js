@@ -96,7 +96,7 @@ const Root = ({ state, libraries }) => {
                                     <Catalog when={data.isCategory}/>
                                     <Post when={data.isPost} />
                                     <Page when={data.isPage} />
-                                    <Error when={data.is404} />
+                                    <Error when={data.isError} />
                                     <Category when={data.isSpecificCategory}/>
                                 </Switch>
 
