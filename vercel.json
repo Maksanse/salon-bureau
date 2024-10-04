@@ -1,10 +1,17 @@
 {
-  "alias": "https://salon-bureau-38wi.vercel.app",
   "version": 2,
   "builds": [
     {
       "src": "package.json",
-      "use": "@frontity/now"
+      "use": "@frederiknordahl/now",
+      "config": {
+        "nodeVersion": "18.x"
+      }
     }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/favicon.ico", "dest": "/favicon.ico" },
+    { "src": "(.*)", "dest": "/server.js" }
   ]
 }
