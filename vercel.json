@@ -1,0 +1,10 @@
+{
+  "alias": "https://salon-bureau-38wi.vercel.app",
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@frontity/now"
+    }
+  ]
+}
