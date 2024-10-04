@@ -3,7 +3,12 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@frederiknordahl/now"
+      "use": "@vercel/node"
     }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/favicon.ico", "dest": "/favicon.ico" },
+    { "src": "/(.*)", "dest": "/server.js" }
   ]
 }
