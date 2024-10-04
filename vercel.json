@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@frederiknordahl/now",
+      "use": "@vercel/node",
       "config": {
         "nodeVersion": "18"
       }
