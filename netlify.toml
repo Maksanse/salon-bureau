@@ -1,0 +1,19 @@
+[build]
+    command = "npm run build"
+    publish = "build/static"
+    functions = "build"
+
+[[redirects]]
+    from = "/static/*"
+    to = "/:splat"
+    status = 200
+
+[[redirects]]
+    from = "/*"
+    to = "/.netlify/functions/server"
+    status = 200
+
+[[headers]]
+    for = "/*"
+    [headers.values]
+        X-Custom-Toml = "Toml"
