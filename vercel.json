@@ -8,15 +8,5 @@
         "nodeVersion": "18"
       }
     }
-  ],
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs18"
-    }
-  },
-  "routes": [
-    { "src": "/static/(.*)", "dest": "/static/$1" },
-    { "src": "/favicon.ico", "dest": "/favicon.ico" },
-    { "src": "(.*)", "dest": "/server.js" }
   ]
 }
