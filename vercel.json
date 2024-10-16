@@ -3,10 +3,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@frontity/now",
-      "config": {
-        "nodeVersion": "18"
-      }
+      "use": "@frontity/now"
     }
   ]
 }
