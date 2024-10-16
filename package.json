@@ -27,7 +27,7 @@
     "@frederiknordahl/now": "^1.2.5",
     "@frontity/core": "^1.16.0",
     "@frontity/html2react": "^1.7.0",
-    "@frontity/now": "^1.2.2",
+    "@frontity/now": "^2.2",
     "@frontity/tiny-router": "^1.4.4",
     "@frontity/wp-source": "^1.11.7",
     "@mui/icons-material": "^5.15.2",
