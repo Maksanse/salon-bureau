@@ -9,7 +9,7 @@ export default {
   },
   state: {
     themeSalon: {
-      RestApiUrl: "http://localhost:8080/wp-json/wp/v2/",
+      RestApiUrl: "http://lwrgkdy.cluster027.hosting.ovh.net/wp-json/wp/v2/",
       isSidebarOpen: false,
       isProfileIconHovered: false,
       isVisible: false,
@@ -50,6 +50,11 @@ export default {
         "/categories/rangements/":
             {
               isSpecificCategory: true,
+              isReady: true
+            },
+        "/contact/":
+            {
+              isContact: true,
               isReady: true
             }
       }

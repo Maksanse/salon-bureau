@@ -49,6 +49,7 @@ const Root = ({ state, libraries }) => {
             <Head>
                 <title>{state.frontity.title}</title>
                 <meta name="description" content={state.frontity.description} />
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <html lang="en" />
                 <link rel="canonical" href={state.router.link} />
             </Head>
@@ -91,7 +92,7 @@ const Root = ({ state, libraries }) => {
                                     )}
                                 {/*<h2>Current URL: {state.router.link}</h2>*/}
                                 <Switch>
-                                    <Form when={data.link === "/contact/"}/>
+                                    <Form when={data.isContact}/>
                                     <Subs when={data.link === "/newsletter/"}/>
                                     <Catalog when={data.isCategory}/>
                                     <Post when={data.isPost} />

@@ -66,9 +66,13 @@ const Navigation = ({ actions, state }) => {
                     </NavItem>
                 </NavLinksLeft>
                 <Logo isSticky={isSticky} isMobile={isMobile} isSmall={isSmall} isLaptop={isLaptop}>
-                     <Image
+                    <Link link="/">
+                        <Image
                          src={logoImg}
-                         alt="Logo" />
+                         alt="Logo"
+                        />
+                    </Link>
+
                 </Logo>
                 <NavLinksRight>
                     <NavItem isSidebarOpen={state.themeSalon.isSidebarOpen} isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
