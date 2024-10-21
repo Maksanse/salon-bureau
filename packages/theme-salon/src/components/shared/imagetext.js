@@ -22,7 +22,7 @@ const ImageText = ({state}) => {
             {({ inView, ref }) => (
                 <Cell ref={ref} inView={inView} isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
                     <FlexCell>
-                        <Image src={Bureau} />
+                        <Image src={Bureau} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}/>
 
 
                     </FlexCell>
@@ -44,13 +44,15 @@ export default connect(ImageText)
 
 const Cell = styled.div`
   display: flex;
+  padding-top: 4rem;
+  
+  flex-flow: ${(props) => (props.isMobile || props.isSmall || props.isLaptop || props.isMedium ? "row wrap" : "row nowrap")};
   margin-left: 1em;
   
   justify-content: space-evenly;
   align-items: center;
   height: 83vh;
   margin: 0;
-  padding: 0 1rem 0;
   gap: 4rem;
 `
 
@@ -60,11 +62,10 @@ const FlexCell = styled.div`
 
   display: flex;
   justify-content: center;
-  margin: 0 0 0 5rem;
 
   img {
     justify-content: center;
-    width: 100%;
+    width: ${(props) => (props.isMobile || props.isSmall || props.isLaptop || props.isMedium ? "100%" : "70%")};
   }
 `
 

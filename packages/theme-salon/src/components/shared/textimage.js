@@ -24,13 +24,9 @@ const TextImage = ({content}) => {
                             le choix des couleurs et des matériaux est également important pour créer une ambiance de travail agréable. Des couleurs claires et des matériaux naturels favorisent la concentration et la créativité.
 
                             En choisissant soigneusement le mobilier de bureau, il est possible de créer un espace de travail qui inspire la créativité, la productivité et le bien-être des employés.
-
-
                         </TextCell>
                         <FlexCell>
                             <Image src={Bureau} />
-
-
                         </FlexCell>
                     </Cell>
                 )}
@@ -42,14 +38,14 @@ export default connect(TextImage)
 
 const Cell = styled.div`
   display: flex;
-  margin-left: 1em;
+  flex-flow: ${(props) => (props.isMobile || props.isSmall || props.isLaptop || props.isMedium ? "row wrap" : "row nowrap")};
+
   
-  justify-content: space-evenly;
+  justify-content:  ${(props) => (props.isMobile || props.isSmall || props.isLaptop || props.isMedium ? "center" : "space-evenly")};
   align-items: center;
   height: 83vh;
   margin: 0;
-  padding: 0 1rem 0;
-  gap: 4rem;
+
 `
 
 const FlexCell = styled.div`
@@ -58,11 +54,11 @@ const FlexCell = styled.div`
 
   display: flex;
   justify-content: center;
-  margin: 0 5rem 0 0;
+  
 
   img {
     justify-content: center;
-    width: 100%;
+    width: ${(props) => (props.isMobile || props.isSmall || props.isLaptop || props.isMedium ? "100%" : "70%")};
   }
 `
 

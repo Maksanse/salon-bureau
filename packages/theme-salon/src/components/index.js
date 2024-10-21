@@ -49,7 +49,7 @@ const Root = ({ state, libraries }) => {
             <Head>
                 <title>{state.frontity.title}</title>
                 <meta name="description" content={state.frontity.description} />
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" >
                 <html lang="en" />
                 <link rel="canonical" href={state.router.link} />
             </Head>
