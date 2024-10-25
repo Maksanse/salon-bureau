@@ -99,7 +99,7 @@ const Carousel = ({state, libraries}) => {
                                     <Slide index={index} key={category.id}>
                                         <div style={{ marginLeft: 10, marginTop: 40, marginBottom: 40 }}>
                                             <Link key={category.id} link={`/categories/${category.slug}`}>
-                                                <Image src={image.download_url} alt={category.name} width="100%" height="440px"  />
+                                                <Image src={image.download_url} alt={category.name} width="100%" height="500px"  />
 
                                             </Link>
                                         </div>
@@ -123,11 +123,13 @@ const FullDiv = styled.div`
     display: flex;
     flex-flow: row wrap;
     background-color: #110B11;
-    justify-content: space-between;
-    align-items: center;
-    height: 83vh;
-    overflow: auto;
-
+    
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+    height: auto;
+    overflow: hidden;
+    padding: 2rem;
 `
 
 const TextDiv = styled.div`
@@ -138,12 +140,20 @@ const TextDiv = styled.div`
     justify-content: space-between;
     background-color: #110B11;
     color: #fff;
-    padding: 2rem 1rem 1rem 2rem;
 `
 
 const TextCell = styled.div` 
   text-align: left;
   font-size: 4rem;
+  
+  @media (max-width: 600px) {
+    font-size: 3rem;
+  }
+  
+  @media (max-width: 400px) {
+    font-size: 2.5rem; 
+  }
+  
   font-family: Helvetica Neue;
   font-weight: 100;
   text-transform: uppercase;
@@ -153,17 +163,26 @@ const TextCell = styled.div`
 
   span {
     font-size: 2rem;
+    @media (max-width: 600px) {
+        font-size: 1.8rem;
+    }
+    @media (max-width: 400px) {
+        font-size: 1.5rem;
+    }
+    
     text-transform: none;
     line-height: .1em;
   }
 `
 
-const ImgCell = styled.div`
-    height: auto;
-`
 
 const CarouselDiv = styled.div`
-    flex: 2 0 auto;
+    flex: 2 1 800px;
+    min-width: 700px;
+    
+    @media (max-width: 800px) {
+        flex: 1 1 100%; /* Permet à CarouselDiv de prendre toute la largeur sur les petits écrans */
+    }
 `
 const ButtonCell = styled.div`
     display:flex;

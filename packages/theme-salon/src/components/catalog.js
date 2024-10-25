@@ -142,6 +142,11 @@ const Card = styled.div`
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;  
   width: 350px;
   height: 300px;
+  
+  @media (max-width: 400px) {
+    width: 300px;
+    height: 250px;
+  }
   overflow: hidden;
   background-color: #fff;
 
@@ -191,7 +196,9 @@ const PostLink = styled(Link)`
 `;
 
 const CategorySection = styled.div`
-    margin: 2rem;
+    @media (min-width: 401px) {
+        margin: 2rem;
+    }
 `;
 
 const CategoryTitle = styled.h2`
@@ -206,6 +213,11 @@ const PostList = styled.div`
   display: flex;
   flex-flow: row wrap;
   gap: 3em;
+  
+  @media (max-width: 799px) {
+      justify-content: center;
+
+  }
 `;
 
 const CategoryLink = styled(Link)`

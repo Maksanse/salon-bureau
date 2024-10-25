@@ -59,13 +59,7 @@ const HeroDiv = styled.div`
     position: relative;
     overflow: hidden;
      
-    @media (max-width: 768px) {
-        height: 70vh; 
-    }
-
-    @media (max-width: 480px) {
-        height: 60vh; 
-    }
+   
 
 `
 
@@ -75,19 +69,29 @@ const TextOver = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   
-   @media (max-width: 600px) {
-        top: 60%; /* Ajuster la position du texte pour les écrans plus petits */
-    }
+ 
 `
 const Heading = styled.div`
-    font-size: ${(props) => (
-    props.isBigScreen ? "3.500rem" :
-    props.isDekstop ? "3.200rem" :
-    props.isMedium ? "2rem" :
-    props.isLaptop ? "1.8rem" :
-    props.isSmall ? "1.700rem" :
-    props.isMobile ? "1.600rem" :
-                    "3.500rem")};
+    font-size: 3.500rem;
+                    
+    @media (min-width: 1824px) {
+      font-size: 3.5rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 3.2rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 2rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 1.8rem;
+    }
+    @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 1.7rem;
+    }
+    @media (max-width: 400px) {
+      font-size: 1.6rem;
+    }
     font-weight: lighter;
     color: #fff;
     text-align: center;

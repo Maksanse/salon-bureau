@@ -96,8 +96,8 @@ const NavBar = styled.nav`
   z-index:1000;
   position: ${(props) => (props.isSticky ? "fixed" : "relative")};
   transition: top 0.9s ease-in-out, background-color 0.3s ease-in-out,
-    height 0s ease-in-out, box-shadow 0.9s ease-in-out,
-    position 0.9s ease-in-out;  
+  height 0s ease-in-out, box-shadow 0.9s ease-in-out,
+  position 0.9s ease-in-out;  
   background-color: ${(props) => (props.isSticky ? "#fff" : "transparent")};
   height: ${(props) => (props.isSticky ? "17vh" : "20vh")};
   box-shadow: ${(props) => (
@@ -111,9 +111,6 @@ const NavBar = styled.nav`
   @media (max-width:  799px) {
     justify-content: space-evenly;
   }
-  
-  
-
 `;
 
 const NavLinksLeft = styled.div`
@@ -197,7 +194,7 @@ const NavItemSearch = styled.div`
 
 const Logo = styled.div`
   display: block;
-  @media (max-width:  799px) {
+  @media (max-width: 999px) {
     display: none;
   }
   

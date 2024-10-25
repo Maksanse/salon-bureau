@@ -125,14 +125,27 @@ const ButtonCell = styled.div`
     box-sizing: border-box;
     color: #fff;
     display: inline-block;
-    font-size: ${(props) => (
-    props.isBigScreen ? "3rem" :
-    props.isDekstop ? "2.5rem" :
-    props.isMedium ? "2rem" :
-    props.isLaptop  ? "1.5rem" :
-    props.isSmall ? "1.2rem" :
-    props.isMobile ? "1rem" :
-    "3rem")};
+    font-size: 3rem;
+    
+    @media (min-width: 1824px) {
+      font-size: 3rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 2.5rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 2rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 1.5rem;
+    }
+    @media (min-width: 401px) and (max-width: 600px) {
+      font-size: 1.2rem;
+    }
+    @media (max-width: 400px) {
+      font-size: 1rem;
+    }
+    
     font-weight: 100;
     padding: ${(props) => (props.isBigScreen || props.isDekstop || props.isMedium ? "1rem 1.250rem" : props.isLaptop ? ".750rem 1rem" : props.isSmall ? ".6rem .850rem" : props.isMobile ? ".5rem .750rem" : "1rem 1.250rem")};
     position: relative;
