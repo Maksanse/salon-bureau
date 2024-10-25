@@ -9,18 +9,12 @@ import ProfileImg from '../assets/fille.jpg';
 
 const More = ({state}) => {
 
-    const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
-    const isDekstop = useMediaQuery({ query: '(min-width: 1224px) and (max-width: 1823px)' });
-    const isMedium = useMediaQuery({ query: '(min-width: 800px) and (max-width: 1223px)' });
-    const isLaptop = useMediaQuery({ query: '(min-width: 601px) and (max-width: 799px)' });
-    const isSmall = useMediaQuery({query: '(min-width: 401px) and (max-width: 600px)' });
-    const isMobile = useMediaQuery({ query: '(max-width: 400px)' })
 
     return (
         <InView threshold={.2}>
             {({ inView, ref }) => (
-                <Cell ref={ref} inView={inView} isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
-                    <TextCell isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                <Cell ref={ref} inView={inView}>
+                    <TextCell>
 
                         Tous nos produits sont disponibles en plusieurs déclinaisons ou sous différentes formes, et peuvent même être modulables.
                         <br/>
@@ -86,14 +80,27 @@ const FlexCell = styled.div`
 
 const TextCell = styled.div` 
   flex: 60%;
-  font-size: ${(props) => (
-    props.isBigScreen ? "1.5rem" :
-        props.isDekstop ? "1.2rem" :
-            props.isMedium ? "1rem" :
-                props.isLaptop ? ".8rem" :
-                    props.isSmall ? ".7rem" :
-                        props.isMobile ? ".650rem" :
-                            "1.5rem")};
+  font-size: 1.5rem;
+                            
+  @media (min-width: 1824px) {
+      font-size: 1.5rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 1.2rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 1rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 0.8rem;
+    }
+    @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 0.7rem;
+    }
+    @media (max-width: 400px) {
+      font-size: 0.650rem;
+    }
+                            
   text-align: justify;
   padding: 2rem;
   font-weight: 300;

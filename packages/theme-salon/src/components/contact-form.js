@@ -8,15 +8,7 @@ import {useMediaQuery} from "react-responsive";
 const Form = ({ state, libraries }) => {
     const form = state.source.page[17];
     const Html2React = libraries.html2react.Component;
-
-
-    const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
-    const isDekstop = useMediaQuery({ query: '(min-width: 1224px) and (max-width: 1823px)' });
-    const isMedium = useMediaQuery({ query: '(min-width: 800px) and (max-width: 1223px)' });
-    const isLaptop = useMediaQuery({ query: '(min-width: 601px) and (max-width: 799px)' });
-    const isSmall = useMediaQuery({query: '(min-width: 401px) and (max-width: 600px)' });
-    const isMobile = useMediaQuery({ query: '(max-width: 400px)' })
-
+    
 
     return (
         <>
@@ -24,7 +16,7 @@ const Form = ({ state, libraries }) => {
             <InView threshold={.1}>
                 {({ inView, ref }) => (
                     <Container ref={ref} inView={inView}>
-                            <Heading isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                            <Heading>
                                 Contactez<br/><strong>Nous !</strong>
                             </Heading>
                             <Content>
@@ -133,28 +125,54 @@ const Heading = styled.div`
   
   width: 50%;
   text-align: left;
-  font-size: ${(props) => (
-    props.isBigScreen ? "4.5rem" :
-    props.isDekstop ? "4rem" :
-    props.isMedium ? "3.5rem" :
-    props.isLaptop ? "3rem" :
-    props.isSmall ? "1.5rem" :
-    props.isMobile ? ".7rem" :
-    "4.5rem")};
+  font-size: 4.5rem;
+   @media (min-width: 1824px) {
+      font-size: 4.5rem;
+   }
+   @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 4rem;
+   }
+   @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 3.5rem;
+   }
+   @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 3rem;
+   }
+   @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 1.5rem;
+   }
+   @media (max-width: 400px) {
+      font-size: 0.7rem;
+   }
+   
+   
   font-family: Helvetica Neue;
   font-weight: 100;
   text-transform: uppercase;
   line-height: .7em;
   padding: 1em;
   strong {
-    font-size: ${(props) => (
-    props.isBigScreen ? "4.5rem" :
-    props.isDekstop ? "4rem" :
-    props.isMedium ? "3.5rem" :
-    props.isLaptop ? "3rem" :
-    props.isSmall ? "1.5rem" :
-    props.isMobile ? ".7rem" :
-    "4.5rem")};
+    font-size: 4.5rem;
+    
+    @media (min-width: 1824px) {
+      font-size: 4.5rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 4rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 3.5rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 3rem;
+    }
+    @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 1.5rem;
+    }
+    @media (max-width: 400px) {
+      font-size: 0.7rem;
+    }
+    
     letter-spacing: -.056rem;
     font-weight: 300;
   }

@@ -56,6 +56,16 @@ const HeroDiv = styled.div`
     padding: 0;
     background-color: #110B11;
     height: 83vh;
+    position: relative;
+    overflow: hidden;
+     
+    @media (max-width: 768px) {
+        height: 70vh; 
+    }
+
+    @media (max-width: 480px) {
+        height: 60vh; 
+    }
 
 `
 
@@ -64,6 +74,10 @@ const TextOver = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  
+   @media (max-width: 600px) {
+        top: 60%; /* Ajuster la position du texte pour les écrans plus petits */
+    }
 `
 const Heading = styled.div`
     font-size: ${(props) => (

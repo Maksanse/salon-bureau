@@ -2,7 +2,6 @@ import React from "react"
 import {connect, keyframes, styled} from "frontity"
 import Image from "@frontity/components/image";
 import {InView} from "react-intersection-observer";
-import {useMediaQuery} from "react-responsive";
 import {Paper} from "@mui/material";
 import MainPic from "../assets/ogi_drive_main.jpeg";
 

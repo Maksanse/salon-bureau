@@ -2,25 +2,16 @@ import React from "react";
 import { connect,styled } from "frontity";
 import DeskImg from "../assets/desk.jpg";
 import Image from "@frontity/components/image";
-import {useMediaQuery} from "react-responsive";
 
 
 const SidebarFullWidth = () => {
 
-
-    const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
-    const isDekstop = useMediaQuery({ query: '(min-width: 1224px) and (max-width: 1823px)' });
-    const isMedium = useMediaQuery({ query: '(min-width: 800px) and (max-width: 1223px)' });
-    const isLaptop = useMediaQuery({ query: '(min-width: 601px) and (max-width: 799px)' });
-    const isSmall = useMediaQuery({query: '(min-width: 401px) and (max-width: 600px)' });
-    const isMobile = useMediaQuery({ query: '(max-width: 400px)' })
-
     return (
         <>
             <Overlay>
-                <GridContainer isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                <GridContainer>
                     <Column>
-                        <SmallBlock isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                        <SmallBlock>
                             <h3>Bureaux</h3>
                             <ul>
                                 <li><a href="#">Bureau droit</a></li>
@@ -34,7 +25,7 @@ const SidebarFullWidth = () => {
 
                         <hr/>
 
-                        <SmallBlock isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                        <SmallBlock>
                             <h3>Sièges</h3>
                             <ul>
                                 <li><a href="#">Fauteuil de travail</a></li>
@@ -49,7 +40,7 @@ const SidebarFullWidth = () => {
 
                         <hr/>
 
-                        <SmallBlock isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                        <SmallBlock>
                             <h3>Rangement</h3>
                             <ul>
                                 <li><a href="#">Caisson</a></li>
@@ -60,7 +51,7 @@ const SidebarFullWidth = () => {
                         </SmallBlock>
                     </Column>
                     <Column>
-                        <SmallBlock isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                        <SmallBlock>
                             <h3>Tables</h3>
                             <ul>
                                 <li><a href="#">Table classique</a></li>
@@ -71,7 +62,7 @@ const SidebarFullWidth = () => {
                             </ul>
                         </SmallBlock>
                         <hr/>
-                        <SmallBlock isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                        <SmallBlock>
                             <h3>Acoustique</h3>
                             <ul>
                                 <li><a href="#">Cabine acoustique</a></li>
@@ -81,7 +72,7 @@ const SidebarFullWidth = () => {
                             </ul>
                         </SmallBlock>
                         <hr/>
-                        <SmallBlock isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                        <SmallBlock>
                             <h3>Borne</h3>
                             <ul>
                                 <li><a href="#">Borne d'accueil</a></li>
@@ -92,8 +83,8 @@ const SidebarFullWidth = () => {
 
                     </Column>
                     <Column>
-                        <Heading isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>Nos dernières<br/><strong>Nouveautés</strong></Heading>
-                        <LargeBlock isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                        <Heading>Nos dernières<br/><strong>Nouveautés</strong></Heading>
+                        <LargeBlock>
                             <Box>
                                 <Image
                                     src={DeskImg}
@@ -127,10 +118,7 @@ const SidebarFullWidth = () => {
                             </Box>
                         </LargeBlock>
                     </Column>
-                    {(isMobile || isSmall || isLaptop || isMedium) ? null : (
-                    <EmptyColumn>
-                        <></>
-                    </EmptyColumn>)}
+
                 </GridContainer>
             </Overlay>
         </>
@@ -138,26 +126,54 @@ const SidebarFullWidth = () => {
 }
 
 const Heading = styled.div`
-  font-size: ${(props) => (
-  props.isBigScreen ? "3.7rem" : 
-  props.isDekstop ? "2.6rem" : 
-  props.isMedium ? "2.5rem" : 
-  props.isLaptop ? "2.2rem" :
-  props.isSmall ? "1.7rem" :
-  props.isMobile ? "1.2rem" : 
-  "3.7rem")};
+  font-size: 3.7rem; 
+
+  
+  @media (min-width: 1824px) {
+      font-size: 3.7rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 2.6rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 2.5rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 2.2rem;
+    }
+    @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 1.7rem;
+    }
+    @media (max-width: 400px) {
+      font-size: 1.2rem;
+    }
+                
   font-family: Helvetica Neue;
   font-weight: 100;
   text-transform: uppercase;
   
   & > strong {
-    font-size: ${(props) => (props.isBigScreen ? "5rem" :
-    props.isDekstop ? "3.800rem" :
-    props.isMedium ? "3.600rem" :
-    props.isLaptop ? "3.1rem" :
-    props.isSmall ? "2.5rem" :
-    props.isMobile ? "1.7rem" : 
-    "5rem")};
+    font-size: 5rem;
+    
+    @media (min-width: 1824px) {
+      font-size: 5rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 3.8rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 3.6rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 3.1rem;
+    }
+    @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 2.5rem;
+    }
+    @media (max-width: 400px) {
+      font-size: 1.7rem;
+    }
+                
     line-height: 0;
     letter-spacing: -.056rem;
     font-weight: 300;
@@ -169,14 +185,32 @@ const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.9); /* couleur de fond semi-transparente */
-  z-index: 1000; /* assure que SidebarFullWidth est au-dessus du reste du contenu */
+  background-color: rgba(255, 255, 255, 0.9); 
+  z-index: 1000; 
   display: ${(props) => (props.isSidebarOpen ? "none" : "block")};
 `;
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: ${(props) => (props.isSmall || props.isLaptop || props.isMedium ? "20% 20% 50%" : props.isMobile ? "auto-fill" : "15% 15% 60%")};
+  gap: 0.5rem;
+  
+
+  @media (min-width: 800px) and (max-width: 1223px) {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 1rem;
+  }
+
+  @media (min-width: 1224px) {
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+    gap: 1.5rem;
+  }
+
+  & > :nth-last-child(1):nth-child(odd) {
+    grid-column: span 2;
+  }
+  
+  
+  
   grid-gap: 1.5rem;
   max-width: 100%;
   margin: 0 auto;
@@ -202,13 +236,27 @@ const Box = styled.div`
 const SmallBlock = styled.div`
 
   h3 {
-    font-size: ${(props) => (props.isBigScreen ? "2.250rem" :
-    props.isDekstop ? "2rem" :
-    props.isMedium ? "1.750rem" :
-    props.isLaptop ? "1rem" :
-    props.isSmall ? ".950rem" :
-    props.isMobile ? ".9rem" :
-    "2.250rem")};
+    font-size: 2.250rem;
+    
+    @media (min-width: 1824px) {
+      font-size: 2.25rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 2rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 1.750rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 1rem;
+    }
+    @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 0.950rem;
+    }
+    @media (max-width: 400px) {
+      font-size: 0.900rem;
+    }
+                
     text-transform: uppercase;
     font-weight: 200;
 
@@ -219,13 +267,28 @@ const SmallBlock = styled.div`
   }
   
   a {
-    font-size: ${(props) => (props.isBigScreen ? "1.750rem" :
-    props.isDekstop ? "1.5rem" :
-    props.isMedium ? "1.250rem" :
-    props.isLaptop ? ".9rem" :
-    props.isSmall ? ".800rem" :
-    props.isMobile ? ".750rem" :
-    "2rem")};
+    font-size: 1.750rem;
+    
+    @media (min-width: 1824px) {
+      font-size: 1.750rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 1.5rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 1.250rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 0.900rem;
+    }
+    @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 0.800rem;
+    }
+    @media (max-width: 400px) {
+      font-size: 0.750rem;
+    }
+                
+    
     display: block;
     margin-bottom: 5px;
     text-decoration: none;
@@ -242,18 +305,26 @@ const SmallBlock = styled.div`
     padding-left: 0;
     display: flex;
     flex-flow: column nowrap;
-    gap: ${(props) => (props.isLaptop || props.isSmall || props.isMobile ? ".3rem" : "1rem")};
+    gap: 1rem;
+    
+    @media (max-width: 799px) {
+      gap: 0.3rem;
+    }
   }
 `;
 
 const LargeBlock = styled.div`
-  gap: ${(props) => (props.isLaptop || props.isSmall || props.isMobile ? ".5rem" : "2rem")};
   display: grid;
-  grid-template-columns: ${(props) => (props.isLaptop || props.isSmall || props.isMobile ? "repeat(auto-fill, 2, 1fr)" : "repeat(2, 1fr)")};
+  gap: .5rem;
+  
+  @media (min-width: 800px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    
+
+  }
+  
 `;
 
-const EmptyColumn = styled.div`
-  grid-column: 4;
-`;
 
 export default connect(SidebarFullWidth);

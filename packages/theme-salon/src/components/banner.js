@@ -3,17 +3,11 @@ import {connect, keyframes, styled} from "frontity"
 import BannerBg from "../assets/banner.jpg"
 import Image from "@frontity/components/image";
 import {InView} from "react-intersection-observer";
-import {useMediaQuery} from "react-responsive";
 
 
 const Banner = () => {
 
-    const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
-    const isDekstop = useMediaQuery({ query: '(min-width: 1224px) and (max-width: 1823px)' });
-    const isMedium = useMediaQuery({ query: '(min-width: 800px) and (max-width: 1223px)' });
-    const isLaptop = useMediaQuery({ query: '(min-width: 601px) and (max-width: 799px)' });
-    const isSmall = useMediaQuery({query: '(min-width: 401px) and (max-width: 600px)' });
-    const isMobile = useMediaQuery({ query: '(max-width: 400px)' })
+
 
     return (
         <FadeBanner>
@@ -21,12 +15,12 @@ const Banner = () => {
 
             <InView threshold={.7}>
                 {({ inView, ref }) => (
-                    <Over ref={ref} inView={inView} isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
-                        <TextOver isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                    <Over ref={ref} inView={inView}>
+                        <TextOver>
                             <h2>SALON.</h2>
                             <p>Spécialiste du mobilier professionelle</p>
                         </TextOver>
-                        <ButtonOver isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                        <ButtonOver>
                             <a href="#"> Nous découvrir </a>
                         </ButtonOver>
                     </Over>
@@ -67,12 +61,17 @@ const Over = styled.div`
   width: 100%;
   height: fit-content;
   display: flex;
-  gap: ${(props) => (props.isSmall || props.isMobile ? ".7rem": "0")};
-  flex-flow: ${(props) => (props.isMobile || props.isSmall ? "row wrap" : "row nowrap")};
+  gap: 0px;
+  flex-flow: row nowrap;
   justify-content: space-between;
   position: absolute; 
   top: 80%; 
   left: 0;
+  
+  @media (max-width: 600px) {
+    flex-flow: row wrap;
+    gap: 0.7rem;
+  }
 
 
   transform: translateY(-50%);
@@ -87,33 +86,60 @@ const TextOver = styled.div`
 
   p {
     display: -webkit-box;
-    -webkit-line-clamp: ${(props) => (props.isLaptop || props.isSmall || props.isMobile ? "2" : "1")};
-    white-space: ${(props) => (props.isLaptop || props.isSmall || props.isMobile ? null : null)};
+    -webkit-line-clamp: 1;
+    white-space: null;
     text-align: left;
     font-weight: lighter;
-    font-size: ${(props) => (
-    props.isBigScreen ? "4rem" :
-    props.isDekstop ? "3.2rem" :
-    props.isMedium ? "2.5rem" :
-    props.isLaptop ? "2rem" :
-    props.isSmall ? "1.5rem" :
-    props.isMobile ? "1.375rem" :
-    "4rem")};
+    font-size: 4rem;
+    @media (min-width: 1824px) {
+        font-size: 4rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+        font-size: 3.2rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+        font-size: 2.5rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+        font-size: 2rem;
+    }
+    @media (min-width: 401px) and (max-width: 600px) {
+        font-size: 1.5rem;
+    }
+    @media  (max-width: 400px) {
+        font-size: 1.375rem;
+    }
     font-family: Helvetica Neue;
     letter-spacing: 0;
     margin: 0;
+    
+    @media (max-width: 799px) {
+        -webkit-line-clamp: 2;
+    }
   }
   
   h2 {
     white-space: nowrap;
-    font-size: ${(props) => (
-    props.isBigScreen ? "4.375rem" :
-    props.isDekstop ? "3.75rem" :
-    props.isMedium ? "3rem" :
-    props.isLaptop ? "2.5rem" :
-    props.isSmall ? "2.1875rem" :
-    props.isMobile ? "1.7rem" :
-    "4.375rem")};
+    font-size: 4.375rem;
+    @media (min-width: 1824px) {
+        font-size: 4.375rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+        font-size: 3.75rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+        font-size: 3rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+        font-size: 2.5rem;
+    }
+    @media (min-width: 401px) and (max-width: 600px) {
+        font-size: 2.1875rem;
+    }
+    @media  (max-width: 400px) {
+        font-size: 1.7rem;
+    }
+    
     letter-spacing: 0;
     margin: 0;
   }
@@ -140,15 +166,45 @@ const ButtonOver = styled.div`
     box-sizing: border-box;
     color: #000;
     display: inline-block;
-    font-size: ${(props) => (
-    props.isBigScreen ? "1.750rem" :
-    props.isDekstop ? "1.500rem" :
-    props.isMedium ? "1.250rem" :
-    props.isLaptop  ? ".9rem" :
-    props.isSmall ? ".7rem" :
-    props.isMobile ? ".550rem" :
-    "1.750rem")};
-    padding: ${(props) => (props.isBigScreen || props.isDekstop || props.isMedium ? "1rem 1.250rem" : props.isLaptop ? ".750rem 1rem" : props.isSmall ? ".6rem .850rem" : props.isMobile ? ".5rem .750rem" : "1rem 1.250rem")};
+    font-size: 1.750rem;
+    
+    @media (min-width: 1824px) {
+        font-size: 1.750rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+        font-size: 1.500rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+        font-size: 1.250rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+        font-size: 0.9rem;
+    }
+    @media (min-width: 401px) and (max-width: 600px) {
+        font-size: 0.7rem;
+    }
+    @media  (max-width: 400px) {
+        font-size: 0.550rem;
+    }
+    
+    padding: 1rem 1.250rem;
+    
+    @media (min-width: 800px) {
+        padding: 1rem 1.250rem;
+    }
+    
+    @media (min-width: 601px) and (max-width: 799px) {
+        padding: .750rem 1rem;
+    }
+    
+    @media (min-width: 401px) and (max-width: 600px) {
+        padding: 0.600rem 0.850rem;
+    }
+    
+    @media (max-width: 400px) {
+        padding: 0.500rem 0.750rem;
+    }
+    
     position: relative;
     transform: translateZ(0) scale(1);
     transition: transform .2s;

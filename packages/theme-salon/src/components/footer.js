@@ -27,24 +27,19 @@ const Footer = ({state, libraries}) => {
 
     const contactPage = state.source.page[17];
 
-    const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
-    const isDekstop = useMediaQuery({ query: '(min-width: 1224px) and (max-width: 1823px)' });
-    const isMedium = useMediaQuery({ query: '(min-width: 800px) and (max-width: 1223px)' });
-    const isLaptop = useMediaQuery({ query: '(min-width: 601px) and (max-width: 799px)' });
-    const isSmall = useMediaQuery({query: '(min-width: 401px) and (max-width: 600px)' });
-    const isMobile = useMediaQuery({ query: '(max-width: 400px)' })
+
 
     return(
         <InView threshold={.1}>
             {({ inView, ref }) => (
             <FooterStyled ref={ref} inView={inView}>
                 <Wrapper>
-                    <WrapperTop isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                    <WrapperTop>
                         <WrapperSets>
                         <WrapperInline>
 
-                            <LinksList isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
-                                <LinkTitle isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}><span> BUREAUX </span></LinkTitle>
+                            <LinksList>
+                                <LinkTitle><span> BUREAUX </span></LinkTitle>
                                 <ul>
                                     <li>
                                         <Link link="/">Tout les bureaux</Link>
@@ -59,8 +54,8 @@ const Footer = ({state, libraries}) => {
                             </LinksList>
 
 
-                            <LinksList isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
-                                <LinkTitle isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}><span> NOTRE UNIVERS </span></LinkTitle>
+                            <LinksList>
+                                <LinkTitle><span> NOTRE UNIVERS </span></LinkTitle>
                                 <ul>
                                     <li>
                                         <Link link="/">Le Mobilier</Link>
@@ -76,8 +71,8 @@ const Footer = ({state, libraries}) => {
 
                         </WrapperInline>
                         <WrapperInline>
-                            <LinksList isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
-                                <LinkTitle isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}><span> SERVICES </span></LinkTitle>
+                            <LinksList>
+                                <LinkTitle><span> SERVICES </span></LinkTitle>
                                 <ul>
                                     <li>
                                         <Link link="/contact">Conception</Link>
@@ -92,8 +87,8 @@ const Footer = ({state, libraries}) => {
                             </LinksList>
 
 
-                            <LinksList isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
-                                <LinkTitle isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}><span> L'ENTREPRISE </span></LinkTitle>
+                            <LinksList>
+                                <LinkTitle><span> L'ENTREPRISE </span></LinkTitle>
                                 <ul>
                                     <li>
                                         <Link link="/contact">A propos</Link>
@@ -108,11 +103,11 @@ const Footer = ({state, libraries}) => {
                             </LinksList>
                         </WrapperInline>
                         </WrapperSets>
-                        {isLaptop || isSmall || isMobile? null : (
-                        <Logo isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
-                            <Image src={LogoFooter} isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}/>
+
+                        <Logo >
+                            <Image src={LogoFooter}/>
                         </Logo>
-                        )}
+
                     </WrapperTop>
                     <WrapperBottom>
                         <SocialList>
@@ -140,7 +135,7 @@ const Footer = ({state, libraries}) => {
                             </li>
                             </ul>
                         </SocialList>
-                        <Legality isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                        <Legality>
 
                                 <ul>
                                     <li>
@@ -153,21 +148,9 @@ const Footer = ({state, libraries}) => {
                                         <Link>Données personnelles</Link>
                                     </li>
                                 </ul>
-                                {(isMobile || isSmall || isLaptop) && (
 
-                                        <Image src={LogoFooter} width="25%"/>
-
-                                )}
-                                {(isMobile || isSmall || isLaptop) && (
-                                    <CreditsBis>
-
-                                        <ReactCountryFlag countryCode="FR" title="Drapeau français"/>
-                                        &nbsp;
-                                        <i>2024 - Salon Bureau ©</i>
-                                    </CreditsBis>
-                                )}
                         </Legality>
-                        {(isMobile || isSmall || isLaptop) ? null : (
+
                         <Credits>
 
 
@@ -177,7 +160,7 @@ const Footer = ({state, libraries}) => {
                                     <i>2024 - Salon Bureau ©</i>
                                 </>
 
-                        </Credits>)}
+                        </Credits>
                     </WrapperBottom>
                 </Wrapper>
             </FooterStyled>
@@ -221,7 +204,7 @@ const WrapperTop = styled.div`
 const WrapperBottom = styled.div`
   width: 100%;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-around;
   padding-top: 20px;
   align-items: center;
@@ -265,7 +248,27 @@ const LinksList = styled.div`
     text-decoration: none;
     cursor: pointer;
     font-weight: 200;
-    font-size:${(props) => (props.isBigScreen ? "1.5em" : props.isDekstop ? "1.3em" : props.isMedium ? "1.2em" : props.isLaptop ? "1em" : props.isSmall ? ".9em" : props.isMobile ? ".8em" : "1.5em")};
+    font-size: 1.5em; 
+    
+    @media (min-width: 1824px) {
+      font-size: 1.5em;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 1.3em;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 1.2em;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 1em;
+    }
+    @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 0.9em;
+    }
+    @media (max-width: 400px) {
+      font-size: 0.8em;
+    }
+    
     white-space: nowrap;
 
     &:hover {
@@ -276,7 +279,27 @@ const LinksList = styled.div`
 
 const LinkTitle = styled.h3`
   
-  font-size: ${(props) => (props.isBigScreen ? "1.5em" : props.isDekstop ? "1.3em" : props.isMedium ? "1.1em" : props.isLaptop ? ".9em" : props.isSmall ? ".7em" : props.isMobile ? ".6em" : "1.5em")};
+  font-size: 1.5em;
+  
+  @media (min-width: 1824px) {
+      font-size: 1.5em;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 1.3em;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 1.1em;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 0.9em;
+    }
+    @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 0.7em;
+    }
+    @media (max-width: 400px) {
+      font-size: 0.6em;
+    }
+    
   span {
     color: #fff;
     white-space: nowrap;
@@ -369,7 +392,22 @@ const Legality = styled.div`
     text-decoration: none;
     cursor: pointer;
     font-weight: 300;
-    font-size: ${(props) => (props.isBigScreen || props.isDekstop || props.isMedium ? "1.3rem" : props.isLaptop ? "1.2rem" : props.isSmall ? "1rem" : props.isMobile ? ".9rem" : "1.3rem")};
+    font-size: 1.3rem;
+    
+    @media (min-width: 800px) {
+      font-size: 1.3rem;
+    }
+    
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 1.2rem;
+    }
+    @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 1rem;
+    }
+    @media (max-width: 400px) {
+      font-size: 0.9rem;
+    }
+    
     white-space: pre-wrap;
     display: inline;
 
@@ -381,11 +419,35 @@ const Legality = styled.div`
   ul {
     list-style: none;
     display: flex;
-    gap: ${(props) => (props.isBigScreen ? "50px" : props.isDekstop ? "40px" : props.isMedium ? "30px" : props.isLaptop ? "20px" : props.isSmall ? "10px" : props.isMobile ? "7px" : "50px")};
-    flex-flow: ${(props) => props.isMobile || props.isSmall || props.isLaptop ? "column nowrap" : "row wrap"};
+    gap: 50px;
+    flex-flow: row wrap;
     justify-content: start;
     padding-left: 10px;
     
+    @media (max-width: 799px) {
+        flex-flow: column nowrap;
+    }
+    
+     @media (min-width: 1824px) {
+        gap: 50px;
+     }
+     
+      @media (min-width: 1224px) and (max-width: 1823px) {
+        gap: 40px;
+     }
+     
+     @media (min-width: 800px) and (max-width: 1223px) {
+        gap: 30px;
+     }
+     @media (min-width: 601px) and (max-width: 799px) {
+        gap: 20px;
+     }
+     @media (min-width: 401px) and (max-width: 600px) {
+        gap: 10px;
+     }
+     @media  (max-width: 400px) {
+        gap: 7px;
+     }
   }
   
   li {
@@ -405,11 +467,25 @@ const Legality = styled.div`
 const Logo = styled.div`
   flex: 20% 0 0;
   text-align: center;
-  display: ${(props) => (props.isMobile && "none")};
+  
+  @media (max-width: 400px) {
+      display: none;
+  }
 
   
   img {
-    width: ${(props) => (props.isBigScreen || props.isDekstop ? "50%" : props.isMedium ? "80%" : "70%")};
+    width: 70%;
+    
+    @media (min-width: 800px) and (max-width: 1223px) {
+      width: 80%;
+    }
+
+    @media (min-width: 1224px) {
+      width: 50%;
+    }
+    
+    
+    
     text-align: center;
     padding-top: 2rem;
   } 

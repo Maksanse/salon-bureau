@@ -9,24 +9,18 @@ import Bureau from '../../assets/bureau_categories.jpg';
 
 
 const ImageText = ({state}) => {
-
-    const isBigScreen = useMediaQuery({ query: '(min-width: 1824px)' })
-    const isDekstop = useMediaQuery({ query: '(min-width: 1224px) and (max-width: 1823px)' });
-    const isMedium = useMediaQuery({ query: '(min-width: 800px) and (max-width: 1223px)' });
-    const isLaptop = useMediaQuery({ query: '(min-width: 601px) and (max-width: 799px)' });
-    const isSmall = useMediaQuery({query: '(min-width: 401px) and (max-width: 600px)' });
-    const isMobile = useMediaQuery({ query: '(max-width: 400px)' })
+    
 
     return (
         <InView threshold={.2}>
             {({ inView, ref }) => (
-                <Cell ref={ref} inView={inView} isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                <Cell ref={ref} inView={inView}>
                     <FlexCell>
-                        <Image src={Bureau} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}/>
+                        <Image src={Bureau}/>
 
 
                     </FlexCell>
-                    <TextCell isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                    <TextCell>
                         Aménager un espace de travail stimulant et propice à la concentration est essentiel pour la réussite d'une entreprise. Le mobilier de bureau joue un rôle crucial dans la création d'un environnement de travail agréable et productif.
                         le choix des couleurs et des matériaux est également important pour créer une ambiance de travail agréable. Des couleurs claires et des matériaux naturels favorisent la concentration et la créativité.
 
@@ -46,7 +40,11 @@ const Cell = styled.div`
   display: flex;
   padding-top: 4rem;
   
-  flex-flow: ${(props) => (props.isMobile || props.isSmall || props.isLaptop || props.isMedium ? "row wrap" : "row nowrap")};
+  flex-flow: row nowrap;
+  
+  @media (max-width: 799px) {
+    flex-flow: row wrap; 
+  }
   margin-left: 1em;
   
   justify-content: space-evenly;
@@ -65,20 +63,38 @@ const FlexCell = styled.div`
 
   img {
     justify-content: center;
-    width: ${(props) => (props.isMobile || props.isSmall || props.isLaptop || props.isMedium ? "100%" : "70%")};
+    width: 70%;
+    
+    @media (max-width: 1223px) {
+        width: 100%;
+    }
   }
 `
 
 const TextCell = styled.div` 
   flex: 60%;
-  font-size: ${(props) => (
-    props.isBigScreen ? "2rem" :
-        props.isDekstop ? "1.7rem" :
-            props.isMedium ? "1.5rem" :
-                props.isLaptop ? "1.25rem" :
-                    props.isSmall ? "1rem" :
-                        props.isMobile ? ".850rem" :
-                            "1.4rem")};
+  font-size: 2rem;
+        
+                            
+   @media (min-width: 1824px) {
+      font-size: 2rem;
+   }
+   @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 1.7rem;
+   }
+   @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 1.5rem;
+   }
+   @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 1.25rem;
+   }
+   @media (min-width: 401px) and (max-width: 600px) {
+      font-size: 1rem;
+   }
+   @media (max-width: 400px) {
+      font-size: 0.850rem;
+   }
+    
   text-align: justify;
   padding: 2rem;
   font-weight: 300;
