@@ -48,7 +48,7 @@ const Newsletter = styled.div`
 
 const Cell = styled.div`
   display: flex;
-  flex-flow: ${(props) => (props.isMobile || props.isSmall || props.isLaptop ? "row wrap" : "row wrap")};
+  flex-flow: row wrap;
   justify-content: space-between;
   transition: opacity 1s cubic-bezier(.5, 0, 0, 1);
   opacity: ${({inView}) => (inView ? "1":"0")};
@@ -66,28 +66,52 @@ const FlexCell = styled.div`
 const TextCell = styled.div` 
   flex: 40%;
   text-align: left;
-  font-size: ${(props) => (
-  props.isBigScreen ? "4rem" : 
-  props.isDekstop ? "3.5rem" : 
-  props.isMedium ? "3rem" : 
-  props.isLaptop ? "2.5rem" : 
-  props.isSmall ? "2rem" : 
-  props.isMobile ? "1.750rem" : 
-  "5rem")};
+  font-size: 4rem;
+  @media (min-width: 1824px) {
+      font-size: 4rem;
+  }
+  @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 3.5rem;
+  }
+  @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 3rem;
+  }
+  @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 2.5rem;
+  }
+  @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 2rem;
+  }
+  @media (max-width: 400px) {
+      font-size: 1.750rem;
+  }
   font-family: Helvetica Neue;
   font-weight: 100;
   text-transform: uppercase;
   line-height: .9em;
  
   strong {
-    font-size: ${(props) => (
-    props.isBigScreen ? "4.5rem" :
-    props.isDekstop ? "4rem" :
-    props.isMedium ? "3.5rem" :
-    props.isLaptop ? "3rem" :
-    props.isSmall ? "2.5rem" :
-    props.isMobile ? "2rem" :
-    "5rem")};
+    font-size: 4.5rem;
+    
+    @media (min-width: 1824px) {
+      font-size: 4.5rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 4rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 3.5rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 3rem;
+    }
+    @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 2.5rem;
+    }
+    @media (max-width: 400px) {
+      font-size: 2rem;
+    }
+    
     letter-spacing: -.056rem;
     font-weight: 300;
   }
@@ -98,14 +122,27 @@ const TextMinCell = styled.div`
   flex-shrink: 2;
   padding-left: .5rem;
   text-align: left;
-  font-size: ${(props) => (
-  props.isBigScreen ? "3rem" : 
-  props.isDekstop ? "2.5rem" : 
-  props.isMedium ? "2rem" : 
-  props.isLaptop ? "1.8rem" : 
-  props.isSmall ? "1.6rem" : 
-  props.isMobile ? "1.4rem" : 
-  "3rem")};
+  font-size: 3rem;
+  
+  @media (min-width: 1824px) {
+      font-size: 3rem;
+    }
+    @media (min-width: 1224px) and (max-width: 1823px) {
+      font-size: 2.5rem;
+    }
+    @media (min-width: 800px) and (max-width: 1223px) {
+      font-size: 2rem;
+    }
+    @media (min-width: 601px) and (max-width: 799px) {
+      font-size: 1.8rem;
+    }
+    @media (min-width : 401px) and (max-width: 600px) {
+      font-size: 1.6rem;
+    }
+    @media (max-width: 400px) {
+      font-size: 1.4rem;
+    }
+  
   font-family: Helvetica Neue;
   font-weight: 100;
   line-height: .9em;
@@ -147,7 +184,24 @@ const ButtonCell = styled.div`
     }
     
     font-weight: 100;
-    padding: ${(props) => (props.isBigScreen || props.isDekstop || props.isMedium ? "1rem 1.250rem" : props.isLaptop ? ".750rem 1rem" : props.isSmall ? ".6rem .850rem" : props.isMobile ? ".5rem .750rem" : "1rem 1.250rem")};
+    padding: 1rem 1.250rem;
+    
+    @media (min-width: 800px) {
+        padding: 1rem 1.250rem;
+    }
+    
+    @media (min-width: 601px) and (max-wdith: 799px) {
+        padding: 0.750rem 1rem;
+    }
+    
+    @media (min-width: 401px) and (max-width: 600px) {
+        padding: 0.600rem 0.850rem;
+    }
+    
+    @media (max-width: 400px) {
+        padding: 0.500rem 0.750rem;
+    }
+    
     position: relative;
     transform: translateZ(0) scale(1);
     transition: transform .2s;
