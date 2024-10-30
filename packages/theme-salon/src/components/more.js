@@ -101,9 +101,10 @@ const TextCell = styled.div`
     }
                             
   text-align: justify;
-  padding: 2rem;
   font-weight: 300;
   line-height: 2rem;
+  word-break: break-word; /* Force le texte à passer à la ligne si nécessaire */
+  white-space: normal;
   
   @media (max-width: 1223px) {
     flex: 1;

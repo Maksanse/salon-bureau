@@ -105,6 +105,9 @@ const BannerDiv = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    @media (max-width: 1223px) {
+        object-fit: scale-down;
+    }
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;  
   }
 `;
@@ -115,7 +118,7 @@ const ProductContainer = styled.div`
    @media (max-width: 1223px) {
   
     flex-flow: column nowrap;
-  }
+   }
 `;
 
 const LeftSideDiv = styled.div`
