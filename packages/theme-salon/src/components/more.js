@@ -15,13 +15,8 @@ const More = ({state}) => {
             {({ inView, ref }) => (
                 <Cell ref={ref} inView={inView}>
                     <TextCell>
-
                         Tous nos produits sont disponibles en plusieurs déclinaisons ou sous différentes formes, et peuvent même être modulables.
-                        <br/>
-
                         Pour les professionnels, nous offrons également un service de conception sur mesure pour des installations très personnalisées.
-                        <br/>
-
                         <strong>Marie</strong>, notre commerciale, est à votre disposition pour répondre à toutes vos questions concernant nos produits, vous fournir des devis, et concevoir des solutions adaptées à vos besoins.
 
                     </TextCell>
@@ -29,21 +24,13 @@ const More = ({state}) => {
                         <ContactList>
                             <strong>CONTACTEZ NOTRE COMMERCIALE DÈS MAINTENANT !</strong>
                             <ul>
-
                                 <li><Link link="/contact">Formulaire de contact</Link></li>
-                                <li><i>000000000</i></li>
+                                <li><i>06 77 65 28 05</i></li>
                                 <li><i>m-juznic@salon-info.fr</i></li>
                             </ul>
                         </ContactList>
                     </FlexCell>
-                    <FlexCell>
-                        <Image src={ProfileImg}/>
-                        <Name>
-                            <span>
-                                Marie Juznic
-                            </span>
-                        </Name>
-                    </FlexCell>
+
                 </Cell>
             )}
         </InView>
@@ -57,9 +44,16 @@ const Cell = styled.div`
   margin-left: 1em;
   justify-content: space-evenly;
   align-items: center;
-  margin: 0;
+  margin-top 20px;
   padding: 32px;
   gap: 4rem;
+  @media (max-width: 1223px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+    padding: 16px;
+  }
+  
 `
 
 const FlexCell = styled.div`
@@ -75,6 +69,11 @@ const FlexCell = styled.div`
     border-radius: 50%;
     width: 200px;
     height: 200px;
+  }
+  
+  @media (max-width: 1223px) {
+    flex: 1;
+    width: 100%;
   }
 `
 
@@ -105,6 +104,11 @@ const TextCell = styled.div`
   padding: 2rem;
   font-weight: 300;
   line-height: 2rem;
+  
+  @media (max-width: 1223px) {
+    flex: 1;
+    width: 100%;
+  }
 `;
 
 const Name = styled.div`
@@ -119,10 +123,9 @@ const ContactList = styled.div`
    display: flex;
    flex-flow: column nowrap;
    
-   
    ul {
       padding: 0;
-      list-style: square;
+      list-style: none;
       display: flex;
       flex-direction: column;
       gap: 1.5rem;

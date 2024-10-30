@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {connect, styled} from "frontity";
+import {connect, keyframes, styled} from "frontity";
 import Link from "@frontity/components/link";
 import Image from "@frontity/components/image";
 import logoImg from "../assets/logo-salon.svg";
@@ -41,19 +41,19 @@ const Navigation = ({ actions, state }) => {
         <>
             <NavBar isSticky={isSticky} isSidebarOpen={state.themeSalon.isSidebarOpen}>
                 <NavLinksLeft>
-                    <NavItem>
+                    <NavItem isSticky={isSticky}>
                         <Hamburger onToggle={actions.themeSalon.deploySidebar}/>
                     </NavItem >
-                    <NavItem isSidebarOpen={state.themeSalon.isSidebarOpen}>
+                    <NavItem isSticky={isSticky} isSidebarOpen={state.themeSalon.isSidebarOpen}>
                         <Link link="#">Accueil</Link>
                     </NavItem>
-                    <NavItem isSidebarOpen={state.themeSalon.isSidebarOpen}>
+                    <NavItem isSticky={isSticky} isSidebarOpen={state.themeSalon.isSidebarOpen}>
                         <Link link="/categories">Nos produits</Link>
                     </NavItem>
-                    <NavItem isSidebarOpen={state.themeSalon.isSidebarOpen}>
+                    <NavItem isSticky={isSticky} isSidebarOpen={state.themeSalon.isSidebarOpen}>
                         <Link link="/contact">Contact</Link>
                     </NavItem>
-                    <NavItem isSidebarOpen={state.themeSalon.isSidebarOpen}>
+                    <NavItem isSticky={isSticky} isSidebarOpen={state.themeSalon.isSidebarOpen}>
                         <Link link="/blog">Blog</Link>
                     </NavItem>
                 </NavLinksLeft>
@@ -67,10 +67,10 @@ const Navigation = ({ actions, state }) => {
 
                 </Logo>
                 <NavLinksRight>
-                    <NavItem isSidebarOpen={state.themeSalon.isSidebarOpen}>
+                    <NavItem isSticky={isSticky} isSidebarOpen={state.themeSalon.isSidebarOpen}>
                         <Link link="#">Nos partenaires</Link>
                     </NavItem>
-                    <NavItem isSidebarOpen={state.themeSalon.isSidebarOpen}>
+                    <NavItem isSticky={isSticky} isSidebarOpen={state.themeSalon.isSidebarOpen}>
                         <Link link="#">Services</Link>
                     </NavItem>
                     <NavItemSearch>
@@ -87,7 +87,27 @@ const Navigation = ({ actions, state }) => {
 export default connect(Navigation);
 
 
+const fadeColor = keyframes`
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+`;
+
 const NavBar = styled.nav`
+  animation: ${fadeColor} .9s cubic-bezier(.5, 0, 0, 1);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(to top, transparent, rgba(255, 255, 255, .99));
+      z-index: -1;
+  } 
+  
+  
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -132,7 +152,7 @@ const NavItem = styled.div`
   @media (max-width: 600px) {
       margin-right: 0;  
   }
-  
+
   a {
     display: ${(props) => (props.isSidebarOpen ? "none" : "block")};
 
@@ -143,12 +163,11 @@ const NavItem = styled.div`
     @media (max-width: 799px) {
       display: ${(props) => (!props.isSidebarOpen ? "none" : "block")}; 
     }
-    
-    color: ${(props) => (props.isSticky ? "#fff" : "#000")};
+    color: #000;
     text-decoration: none;
     padding: 10px;
     cursor: pointer;
-    font-weight: 300;
+    font-weight: ${(props) => (props.isSticky ? "300" : "500")};
     font-size: 1.5rem; 
     
     @media (min-width: 1824px) {
@@ -182,11 +201,9 @@ const NavItemSearch = styled.div`
   margin-right: 1rem;
   text-align: center;
   white-space: nowrap; 
-  
   @media (min-width: 1224px) and (max-width: 1823px) {
       text-align: ;
   }
-  
   @media (min-width: 1824px) {
     width: 8vw;
   }
@@ -210,4 +227,5 @@ const Logo = styled.div`
       }
   }
 `;
+
 

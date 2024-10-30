@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect} from "react"
 import { connect, styled } from "frontity"
 import {InView} from "react-intersection-observer"
 import {useMediaQuery} from "react-responsive";
@@ -6,9 +6,48 @@ import {useMediaQuery} from "react-responsive";
 
 
 const Form = ({ state, libraries }) => {
-    const form = state.source.page[17];
     const Html2React = libraries.html2react.Component;
-    
+    useEffect(() => {
+        const fetchContactPage = async () => {
+
+
+            const response = await libraries.source.api.get({
+                endpoint: "pages",
+                params: {slug: "contact"},
+            });
+
+            const entitiesAdded = await libraries.source.populate({
+                response,
+                state,
+            });
+        };
+
+
+
+        fetchContactPage();
+
+        // const script = document.createElement("script");
+        // script.src = "https://url-vers-votre-site/wp-content/plugins/contact-form-7/includes/js/scripts.js";
+        // script.async = true;
+        // document.body.appendChild(script);
+        //
+        // return () => {
+        //     document.body.removeChild(script);
+        // };
+
+    }, []);
+
+    // useEffect(() => {
+    //     if (window.wpcf7) {
+    //         window.wpcf7.init(document.body);
+    //     }
+    // }, []);
+
+    const form = state.source.page[17];
+
+    if (!form || !form.content) return <p>Chargement...</p>;
+
+
 
     return (
         <>

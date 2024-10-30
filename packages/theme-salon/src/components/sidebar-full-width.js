@@ -2,23 +2,20 @@ import React from "react";
 import { connect,styled } from "frontity";
 import DeskImg from "../assets/desk.jpg";
 import Image from "@frontity/components/image";
+import Link from "@frontity/components/link" ;
 
 
-const SidebarFullWidth = () => {
+const SidebarFullWidth = ({actions, state}) => {
 
     return (
         <>
-            <Overlay>
+            <Overlay >
                 <GridContainer>
                     <Column>
                         <SmallBlock>
                             <h3>Bureaux</h3>
                             <ul>
-                                <li><a href="#">Bureau droit</a></li>
-                                <li><a href="#">Bureau réglable</a></li>
-                                <li><a href="#">"Bench"</a></li>
-                                <li><a href="#">Bureau direction</a></li>
-                                <br/>
+                                <li><Link link="/categories/bureaux" onClick={actions.themeSalon.avoidSidebar}>Tous les bureaux</Link></li>
 
                             </ul>
                         </SmallBlock>
@@ -28,13 +25,8 @@ const SidebarFullWidth = () => {
                         <SmallBlock>
                             <h3>Sièges</h3>
                             <ul>
-                                <li><a href="#">Fauteuil de travail</a></li>
-                                <li><a href="#">Chaise classique</a></li>
-                                <li><a href="#">Tabouret haut</a></li>
-                                <li><a href="#">Fauteuil de direction</a></li>
-                                <li><a href="#">Espace détente</a></li>
-                                <li><a href="#">Fauteuil technique</a></li>
-                                <li><a href="#">Mobilier extérieur</a></li>
+                                <li><Link link="/categories/sieges" onClick={actions.themeSalon.avoidSidebar}>Tous les sièges</Link></li>
+
                             </ul>
                         </SmallBlock>
 
@@ -43,10 +35,8 @@ const SidebarFullWidth = () => {
                         <SmallBlock>
                             <h3>Rangement</h3>
                             <ul>
-                                <li><a href="#">Caisson</a></li>
-                                <li><a href="#">Armoire</a></li>
-                                <li><a href="#">Vestiaires</a></li>
-                                <li><a href="#">Archivage</a></li>
+                                <li><Link link="/categories/rangements" onClick={actions.themeSalon.avoidSidebar}>Tous les rangements</Link></li>
+
                             </ul>
                         </SmallBlock>
                     </Column>
@@ -54,28 +44,23 @@ const SidebarFullWidth = () => {
                         <SmallBlock>
                             <h3>Tables</h3>
                             <ul>
-                                <li><a href="#">Table classique</a></li>
-                                <li><a href="#">Table basse</a></li>
-                                <li><a href="#">Table haute</a></li>
-                                <li><a href="#">Table modulaire</a></li>
-                                <li><a href="#">Table réunion</a></li>
+                                <li><Link link="/categories/sieges" onClick={actions.themeSalon.avoidSidebar}>Toutes les tables</Link></li>
+
                             </ul>
                         </SmallBlock>
                         <hr/>
                         <SmallBlock>
                             <h3>Acoustique</h3>
                             <ul>
-                                <li><a href="#">Cabine acoustique</a></li>
-                                <li><a href="#">Cloison</a></li>
-                                <li><a href="#">Cabine confidentiel</a></li>
-                                <li><a href="#">Panneau mural et plafond</a></li>
+                                <li><Link link="/categories/mobilier-acoustique" onClick={actions.themeSalon.avoidSidebar}>Tout le mobilier acoustique</Link></li>
+
                             </ul>
                         </SmallBlock>
                         <hr/>
                         <SmallBlock>
                             <h3>Borne</h3>
                             <ul>
-                                <li><a href="#">Borne d'accueil</a></li>
+                                <li><Link link="/categories/comptoir-accueil" onClick={actions.themeSalon.avoidSidebar}>Tout le mobilier d'accueil</Link></li>
 
                             </ul>
                         </SmallBlock>
@@ -120,7 +105,7 @@ const SidebarFullWidth = () => {
                     </Column>
 
                 </GridContainer>
-            </Overlay>
+            </Overlay >
         </>
     )
 }

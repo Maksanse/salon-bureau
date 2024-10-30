@@ -42,14 +42,12 @@ const Footer = ({state, libraries}) => {
                                 <LinkTitle><span> BUREAUX </span></LinkTitle>
                                 <ul>
                                     <li>
-                                        <Link link="/">Tout les bureaux</Link>
+                                        <Link link="/categories/bureaux">Tout les bureaux</Link>
                                     </li>
                                     <li>
-                                        <Link link ="/blog">Nos collections</Link>
+                                        <Link link ="/categories">Nos collections</Link>
                                     </li>
-                                    <li>
-                                        <Link link="/a-propos">Nouveautés</Link>
-                                    </li>
+                                  
                                 </ul>
                             </LinksList>
 
@@ -64,7 +62,7 @@ const Footer = ({state, libraries}) => {
                                         <Link link ="/blog">L'Expertise</Link>
                                     </li>
                                     <li>
-                                        <Link link="/a-propos">Notre histoire</Link>
+                                        <Link link="/notre-histoire">Notre histoire</Link>
                                     </li>
                                 </ul>
                             </LinksList>
@@ -75,7 +73,7 @@ const Footer = ({state, libraries}) => {
                                 <LinkTitle><span> SERVICES </span></LinkTitle>
                                 <ul>
                                     <li>
-                                        <Link link="/contact">Conception</Link>
+                                        <Link link="/contact">Demande de Devis</Link>
                                     </li>
                                     <li>
                                         <Link link ="/blog">Installation</Link>
@@ -94,10 +92,7 @@ const Footer = ({state, libraries}) => {
                                         <Link link="/contact">A propos</Link>
                                     </li>
                                     <li>
-                                        <Link link="/">Link</Link>
-                                    </li>
-                                    <li>
-                                        <Link link="/a-propos">Nos partenaires</Link>
+                                        <Link link="/informations">Nos partenaires</Link>
                                     </li>
                                 </ul>
                             </LinksList>

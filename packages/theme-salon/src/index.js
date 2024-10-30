@@ -88,6 +88,9 @@ export default {
       deploySidebar: ({state}) => {
         state.themeSalon.isSidebarOpen= !state.themeSalon.isSidebarOpen
       },
+      avoidSidebar: ({state}) => {
+          state.themeSalon.isSidebarOpen = false;
+      },
       handleMouseEnter: ({state}) => {
 
         state.themeSalon.isProfileIconHovered = true;

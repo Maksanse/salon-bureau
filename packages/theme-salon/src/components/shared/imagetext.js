@@ -15,7 +15,7 @@ const ImageText = ({state}) => {
         <InView threshold={.2}>
             {({ inView, ref }) => (
                 <Cell ref={ref} inView={inView}>
-                    <FlexCell>
+                    <FlexCell ref={ref} inView={inView}>
                         <Image src={Bureau}/>
 
 
@@ -37,8 +37,11 @@ export default connect(ImageText)
 
 
 const Cell = styled.div`
+
   display: flex;
   padding-top: 4rem;
+  padding-bottom: 4rem;
+
   
   flex-flow: row nowrap;
   
@@ -49,14 +52,21 @@ const Cell = styled.div`
   
   justify-content: space-evenly;
   align-items: center;
-  height: 83vh;
   margin: 0;
   gap: 4rem;
 `
 
 const FlexCell = styled.div`
+  @media (min-width: 800px) {
+  
+      transform: translateX(${({ inView }) => (inView ? "20px" : "-70px")});
+      transition: 2s cubic-bezier(.5, 0, 0, 1);
+      opacity: ${({inView}) => (inView ? "1":"0")};
+      padding: 0;
+  }
   flex: 40%;
   width: 50%;
+  padding: 20px;
 
   display: flex;
   justify-content: center;

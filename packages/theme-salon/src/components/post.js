@@ -26,21 +26,24 @@ const Post = ({ state, libraries }) => {
         <>
             <InView threshold={.1}>
                 {({ inView, ref }) => (
-                    <Container isMobile={isMobile} ref={ref} inView={inView}>
+                    <>
+                        <Container isMobile={isMobile} ref={ref} inView={inView}>
 
-                        <Heading isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile} bgImage="{ImageFond}">
-                            <BreadcrumbContainer> <Breadcrumb/></BreadcrumbContainer>
+                            <Heading isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile} bgImage="{ImageFond}">
+                                <BreadcrumbContainer> <Breadcrumb/></BreadcrumbContainer>
 
 
 
-                            <h1>{post.title.rendered}</h1>
-                        </Heading>
+                                <h1>{post.title.rendered}</h1>
+                            </Heading>
 
-                        <Content isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
-                            <Html2React html={sanitizedContent} />
-                        </Content>
+                            <Content isBigScreen={isBigScreen} isDekstop={isDekstop} isMedium={isMedium} isLaptop={isLaptop} isSmall={isSmall} isMobile={isMobile}>
+                                <Html2React html={sanitizedContent} />
+                            </Content>
+
+                        </Container>
                         <More/>
-                    </Container>
+                    </>
                     )}
             </InView>
         </>
@@ -54,6 +57,11 @@ const Container = styled.div`
   transform: translateY(${({ inView }) => (inView ? "0" : "-50px")});
   transition: 1s cubic-bezier(.5, 0, 0, 1);
   opacity: ${({inView}) => (inView ? "1":"0")};
+  
+  @media (max-width: 1223px) {
+    display: flex;
+    flex-flow: column nowrap;
+  }
 `;
 
 
@@ -103,7 +111,11 @@ const BannerDiv = styled.div`
 
 const ProductContainer = styled.div`
   display: flex;
-  height: 83vh;
+  
+   @media (max-width: 1223px) {
+  
+    flex-flow: column nowrap;
+  }
 `;
 
 const LeftSideDiv = styled.div`
