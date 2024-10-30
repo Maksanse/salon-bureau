@@ -16,7 +16,7 @@ const More = ({state}) => {
                 <Cell ref={ref} inView={inView}>
                     <TextCell>
                         Tous nos produits sont disponibles en plusieurs déclinaisons ou sous différentes formes, et peuvent même être modulables.
-                        Pour les professionnels, nous offrons également un service de conception sur mesure pour des installations très personnalisées.
+                        Pour les professionnels, nous offrons également un service de conception sur mesure pour des installations très personnalisées.<br/>
                         <strong>Marie</strong>, notre commerciale, est à votre disposition pour répondre à toutes vos questions concernant nos produits, vous fournir des devis, et concevoir des solutions adaptées à vos besoins.
 
                     </TextCell>
