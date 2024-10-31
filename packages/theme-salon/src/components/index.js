@@ -75,10 +75,13 @@ const Root = ({ state, libraries }) => {
                                 {data.isHome &&(
                                     <>
                                         <ImageText/>
+
                                         <Carousel/>
 
                                         <ParaBanner/>
-                                        <TextImage/>
+
+                                        {/*<TextImage/>*/}
+
                                         <Routes>
                                     {/*     <h3>Our articles :</h3> */}
                                             <Switch>
