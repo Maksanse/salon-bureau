@@ -39,6 +39,7 @@ const Root = ({ state, libraries }) => {
                         margin: 0;
                         font-family: "Helvetica Neue"; 
                         padding: 0;
+                
                     }
                     main {
                         background-color: rgba(231, 225, 218, .4);
@@ -52,6 +53,8 @@ const Root = ({ state, libraries }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <html lang="en" />
                 <link rel="canonical" href={state.router.link} />
+                <link href="https://fonts.cdnfonts.com/css/helvetica-neue-55" rel="stylesheet">
+
             </Head>
             <Container>
                 {data.isHome ? (
