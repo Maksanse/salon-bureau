@@ -9,7 +9,7 @@ export default {
   },
   state: {
     themeSalon: {
-      RestApiUrl: "http://lwrgkdy.cluster027.hosting.ovh.net/wp-json/wp/v2/",
+      RestApiUrl: "https://api.salon-bureau.fr/wp-json/wp/v2/",
       isSidebarOpen: false,
       isProfileIconHovered: false,
       isVisible: false,

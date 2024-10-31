@@ -15,7 +15,7 @@ const settings = {
       "name": "@frontity/wp-source",
       "state": {
         "source": {
-          "url": "http://lwrgkdy.cluster027.hosting.ovh.net/",
+          "url": "https://api.salon-bureau.fr/",
           "homepage": "/"
         }
       }
