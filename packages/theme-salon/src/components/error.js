@@ -11,6 +11,12 @@ const Error = ({ state }) => {
                 <p>
                     La page que vous cherchez n'existe pas
                 </p>
+                <p>
+                    La page dessus
+                </p>
+                <p>
+                    La page dessus
+                </p>
             </div>
             <Home link="/">Retournez à l'accueil</Home>
         </Content>

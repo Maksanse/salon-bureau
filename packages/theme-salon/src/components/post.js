@@ -104,7 +104,7 @@ const BannerDiv = styled.div`
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: scale-down;
     @media (max-width: 1223px) {
         object-fit: scale-down;
     }

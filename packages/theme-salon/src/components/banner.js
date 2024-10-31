@@ -18,7 +18,7 @@ const Banner = () => {
                     <Over ref={ref} inView={inView}>
                         <TextOver>
                             <h2>SALON.</h2>
-                            <p>Spécialiste du mobilier professionelle</p>
+                            <p>Spécialiste du mobilier professionel</p>
                         </TextOver>
                         <ButtonOver>
                             <a href="#"> Nous découvrir </a>
