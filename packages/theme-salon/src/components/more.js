@@ -15,10 +15,8 @@ const More = ({state}) => {
             {({ inView, ref }) => (
                 <Cell ref={ref} inView={inView}>
                     <TextCell>
-                        Tous nos produits sont disponibles en plusieurs déclinaisons ou sous différentes formes, et peuvent même être modulables.
-                        Pour les professionnels, nous offrons également un service de conception sur mesure pour des installations très personnalisées.<br/>
+                        Tous nos produits se déclinent en plusieurs configurations et coloris, et peuvent même être modulables. Pour les professionnels, nous proposons également un service de conception sur mesure pour des installations personnalisées.
                         <strong>Marie</strong>, notre commerciale, est à votre disposition pour répondre à toutes vos questions concernant nos produits, vous fournir des devis, et concevoir des solutions adaptées à vos besoins.
-
                     </TextCell>
                     <FlexCell>
                         <ContactList>
@@ -26,7 +24,7 @@ const More = ({state}) => {
                             <ul>
                                 <li><Link link="/contact">Formulaire de contact</Link></li>
                                 <li><i>06 77 65 28 05</i></li>
-                                <li><i>m-juznic@salon-info.fr</i></li>
+                                <li><i>contact@salon-info.fr</i></li>
                             </ul>
                         </ContactList>
                     </FlexCell>

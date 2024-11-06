@@ -4,7 +4,7 @@ import {useMediaQuery} from "react-responsive";
 import MainPic from "../assets/ogi_drive_main.jpeg";
 import { ParallaxBanner } from 'react-scroll-parallax';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import FondBureau from '../assets/realisation_arcelor.jpeg';
+import FondBureau from '../assets/realisation_arcelor.jpg';
 
 const ParaBanner = () => {
 

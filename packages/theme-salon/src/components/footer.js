@@ -58,9 +58,7 @@ const Footer = ({state, libraries}) => {
                                     <li>
                                         <Link link="/">Le Mobilier</Link>
                                     </li>
-                                    <li>
-                                        <Link link ="/blog">L'Expertise</Link>
-                                    </li>
+                                
                                     <li>
                                         <Link link="/notre-histoire">Notre histoire</Link>
                                     </li>
@@ -75,12 +73,8 @@ const Footer = ({state, libraries}) => {
                                     <li>
                                         <Link link="/contact">Demande de Devis</Link>
                                     </li>
-                                    <li>
-                                        <Link link ="/blog">Installation</Link>
-                                    </li>
-                                    <li>
-                                        <Link link="/a-propos">Suivi</Link>
-                                    </li>
+
+
                                 </ul>
                             </LinksList>
 
@@ -91,9 +85,7 @@ const Footer = ({state, libraries}) => {
                                     <li>
                                         <Link link="/contact">A propos</Link>
                                     </li>
-                                    <li>
-                                        <Link link="/informations">Nos partenaires</Link>
-                                    </li>
+
                                 </ul>
                             </LinksList>
                         </WrapperInline>

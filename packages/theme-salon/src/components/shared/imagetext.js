@@ -21,11 +21,7 @@ const ImageText = ({state}) => {
 
                     </FlexCell>
                     <TextCell>
-                        Aménager un espace de travail stimulant et propice à la concentration est essentiel pour la réussite d'une entreprise. Le mobilier de bureau joue un rôle crucial dans la création d'un environnement de travail agréable et productif.
-                        le choix des couleurs et des matériaux est également important pour créer une ambiance de travail agréable. Des couleurs claires et des matériaux naturels favorisent la concentration et la créativité.
-
-                        En choisissant soigneusement le mobilier de bureau, il est possible de créer un espace de travail qui inspire la créativité, la productivité et le bien-être des employés.
-
+                        Créer un espace de travail inspirant et favorable à la concentration est fondamental pour le succès d'une entreprise. Le mobilier de bureau est un élément clé dans l'établissement d'un environnement de travail agréable et productif. Le choix des couleurs et des matériaux joue également un rôle important dans l'ambiance de travail. Des teintes claires et des matériaux naturels contribuent à stimuler la concentration et la créativité. En sélectionnant avec soin le mobilier de bureau, la créativité, la productivité et le bien-être des employés sont développés.
 
                     </TextCell>
                 </Cell>
@@ -66,17 +62,18 @@ const FlexCell = styled.div`
   }
   flex: 40%;
   width: 50%;
-  padding: 20px;
+
 
   display: flex;
   justify-content: center;
 
   img {
     justify-content: center;
-    width: 70%;
+    width: 100%;
+    object-fit: cover;
     
-    @media (max-width: 1223px) {
-        width: 100%;
+    @media (max-width: 799px) {
+        width: 70%;
     }
   }
 `

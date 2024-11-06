@@ -220,6 +220,7 @@ const Logo = styled.div`
       img {
         width: 50%;
         min-width: 50%;
+        max-width: 70%;
         height: auto;
         margin: auto;
         text-align: center;

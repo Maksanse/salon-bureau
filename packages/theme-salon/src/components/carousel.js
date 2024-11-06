@@ -62,8 +62,7 @@ const Carousel = ({state, libraries}) => {
                                 <hr/>
 
                                 <span>
-                                    Découvrez les gammes de produits<br/>
-                                    que propose <strong>Salon</strong>
+
                                 </span>
                             </TextCell>
                         )}
@@ -78,7 +77,7 @@ const Carousel = ({state, libraries}) => {
                                 }
                             }}>
                             <Button href="/categories" type="link" size="large">
-                                Découvrez l'ensemble de nos produits
+                                    Découvrez l'ensemble de nos produits
                             </Button>
                         </ConfigProvider>
                     </ButtonCell>
@@ -202,6 +201,13 @@ const ButtonCell = styled.div`
      
      :hover::before{
         width: 33px;
+     }
+     
+     a {
+        text-decoration: none;
+        span {
+            
+        }
      }
 
 `
