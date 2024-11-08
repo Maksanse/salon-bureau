@@ -3,6 +3,9 @@ import {connect, keyframes, styled} from "frontity"
 import BannerBg from "../assets/banner.jpg"
 import Image from "@frontity/components/image";
 import {InView} from "react-intersection-observer";
+import logoImg from "../assets/logo-salon.svg";
+import Link from "@frontity/components/link";
+
 
 
 const Banner = () => {
@@ -16,8 +19,17 @@ const Banner = () => {
             <InView threshold={.7}>
                 {({ inView, ref }) => (
                     <Over ref={ref} inView={inView}>
+
                         <TextOver>
-                            <h2>SALON</h2>
+                            <Logo>
+                                <Link link="/">
+                                    <Image
+                                        src={logoImg}
+                                        alt="Logo"
+                                    />
+                                </Link>
+                            </Logo>
+                            {/*<h2>SALON</h2>*/}
                             <p>Spécialiste du mobilier professionel</p>
                         </TextOver>
                         <ButtonOver>
@@ -37,6 +49,12 @@ const fadeColor = keyframes`
   100% { opacity: 1; }
 `;
 
+const Logo = styled.div`
+    width: 100px;
+    @media (min-width: 1000px) {
+        display: none;
+    }
+`;
 
 const FadeBanner = styled.div`
   animation: ${fadeColor} .9s cubic-bezier(.5, 0, 0, 1);
@@ -65,8 +83,13 @@ const Over = styled.div`
   flex-flow: row nowrap;
   justify-content: space-between;
   position: absolute; 
-  top: 80%; 
+  top: 90%; 
   left: 0;
+  
+  @media (max-width: 513px) {
+    top: 88%;
+  }
+  
   
   @media (max-width: 600px) {
     flex-flow: row wrap;
@@ -139,6 +162,7 @@ const TextOver = styled.div`
     @media  (max-width: 400px) {
         font-size: 1.7rem;
     }
+    
     
     letter-spacing: 0;
     margin: 0;
