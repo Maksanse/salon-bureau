@@ -214,7 +214,7 @@ const Logo = styled.div`
   @media (max-width: 999px) {
     display: none;
   }
-  width: 100%;
+  width: 200px;
   padding: 1.5rem 1rem 1rem 4rem;
   a {
       img {
