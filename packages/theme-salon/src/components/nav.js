@@ -45,7 +45,7 @@ const Navigation = ({ actions, state }) => {
                         <Hamburger onToggle={actions.themeSalon.deploySidebar}/>
                     </NavItem >
                     <NavItem isSticky={isSticky} isSidebarOpen={state.themeSalon.isSidebarOpen}>
-                        <Link link="#">Accueil</Link>
+                        <Link link="#">Home</Link>
                     </NavItem>
                     <NavItem isSticky={isSticky} isSidebarOpen={state.themeSalon.isSidebarOpen}>
                         <Link link="/categories">Nos produits</Link>
