@@ -54,7 +54,7 @@ const Navigation = ({ actions, state }) => {
                         <Link link="/contact">Contact</Link>
                     </NavItem>
                     <NavItem isSticky={isSticky} isSidebarOpen={state.themeSalon.isSidebarOpen}>
-                        <Link link="/blog">Blog</Link>
+                        <Link link="/blog">Article</Link>
                     </NavItem>
                 </NavLinksLeft>
                 <Logo isSticky={isSticky}>
